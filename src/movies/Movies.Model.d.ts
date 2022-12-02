@@ -7,7 +7,10 @@ export interface movieDTO{
     poster: string;
 
 }
+
+/*
 export interface LandingPageDTO{
-    inTheaters? : movieDTO[];
-    upcommingReleases? : movieDTO[]
+    inTheaters : movieDTO[];
+    upcommingReleases : movieDTO[]
 }
+*/
