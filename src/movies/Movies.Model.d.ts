@@ -8,9 +8,8 @@ export interface movieDTO{
 
 }
 
-/*
+
 export interface LandingPageDTO{
-    inTheaters : movieDTO[];
-    upcommingReleases : movieDTO[]
+    inTheaters? : movieDTO[];
+    upcommingReleases? : movieDTO[]
 }
-*/
