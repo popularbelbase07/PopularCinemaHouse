@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import MovieList from './movies/MovieList';
 import { LandingPageDTO} from './movies/Movies.Model';
+
 
 function App() {
 
@@ -42,12 +42,13 @@ function App() {
   });
 
   return (
-    <>
+    <div className='container'>
+    
     <h3>In Theaters</h3>
     <MovieList movies={movies.inTheaters}/>
     <h3>Upcomming Releases</h3>
     <MovieList movies={movies.upcommingReleases}/>
-   </>
+   </div>
   );
 }
 
