@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import Loading from "./Loading";
 
+
 export default function GenericList(props: GenericListProps)
 {
     if(!props.list)

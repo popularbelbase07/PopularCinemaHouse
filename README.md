@@ -29,3 +29,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 <> Popular Cinema House
 1. Create a project 
 * npx create-react-app popularmovies --template typescript
+
+2. Install bootstrap
+* npm install bootstrap@5.0
+
+3. Install React-Router-Dom and need to install following types becuse using typescript.
+* npm i react-router-dom@5.2
+* npm i --save-dev@types/react-router-dom
