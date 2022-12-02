@@ -1,8 +1,6 @@
-
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import IndexGenres from "./genres/IndexGenres";
-import LandingMoviesPage from "./movies/LandingMoviesPage";
 import Menu from "./navBar/Menu";
+import routes from "./Route-config";
 
 function App() {
  
@@ -12,8 +10,10 @@ function App() {
       <Menu />
       <div className="container">
         <Switch>
-          <Route exact path="/"> <LandingMoviesPage/> </Route>
-          <Route path="/genres"> <IndexGenres /> </Route>
+         {routes.map(route =>
+           <Route key={route.path} path={route.path} exact= {route.exact} >
+            <route.component/>
+            </Route>)}
         </Switch>
       </div>
     </BrowserRouter>
