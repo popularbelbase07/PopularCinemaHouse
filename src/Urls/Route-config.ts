@@ -16,6 +16,8 @@ import FilterMovies from "../movies/FilterMovies";
 
 import LandingMoviesPage from "../movies/LandingMoviesPage";
 
+import RedirectToLandingPage from "../Utils/RedirectToLandingPage";
+
 
 
 
@@ -38,6 +40,8 @@ const routes = [
     {path: '/movies/filter', component: FilterMovies},
    
 
-    {path: '/', component: LandingMoviesPage, exact:true}
+    {path: '/', component: LandingMoviesPage, exact:true},
+    // create page not found
+    {path: '*', component: RedirectToLandingPage}
 ];
 export default routes;
