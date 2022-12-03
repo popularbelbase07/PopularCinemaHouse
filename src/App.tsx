@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Menu from "./navBar/Menu";
-import routes from "./Route-config";
+import routes from "./Urls/Route-config";
 
 function App() {
  
