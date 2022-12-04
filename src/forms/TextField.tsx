@@ -1,6 +1,6 @@
 import { ErrorMessage, Field } from "formik";
 
-export default function TextField(props: textFieldProps){
+export default function TextField(props: TextFieldProps){
     return (
 
         <div className="mb-3">
@@ -12,7 +12,7 @@ export default function TextField(props: textFieldProps){
       </div>
     )
 }
-interface textFieldProps{
+interface TextFieldProps{
     field: string;
     displayName: string
 }

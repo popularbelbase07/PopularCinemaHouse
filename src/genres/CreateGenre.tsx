@@ -18,11 +18,13 @@ export default function CreateGenre() {
         }}
         // Installation of Yup for validation of the form
         validationSchema={Yup.object({
-          name: Yup.string().required("This field is required !!!"),
+          name: Yup.string()
+            .required("This field is required !!!")
+            .firstLetterUppercase(),
         })}
       >
         <Form>
-        <TextField field="name" displayName="Name"/>
+          <TextField field="name" displayName="Name" />
           <Button type="submit">Save</Button>
           <Link className="btn btn-secondary" to="/genres">
             Cancle

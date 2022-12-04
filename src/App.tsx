@@ -1,6 +1,9 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Menu from "./navBar/Menu";
 import routes from "./Urls/Route-config";
+import configureValidations from "./validationForm/Validation";
+// calling the custom validation function(UpperCase)
+configureValidations();
 
 function App() {
  
