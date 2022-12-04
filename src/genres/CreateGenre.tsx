@@ -13,7 +13,9 @@ export default function CreateGenre() {
       <h3>Create Genre</h3>
       <Formik
         initialValues={{ name: "" }}
-        onSubmit={(value) => {
+        onSubmit={ async value => {
+          // When the form is posted 
+          await new Promise(r => setTimeout(r, 1000))
           console.log(value);
         }}
         // Installation of Yup for validation of the form
@@ -23,15 +25,24 @@ export default function CreateGenre() {
             .firstLetterUppercase(),
         })}
       >
-        <Form>
-          <TextField field="name" displayName="Name" />
-          <Button type="submit">Save</Button>
-          <Link className="btn btn-secondary" to="/genres">
-            Cancle
-          </Link>
-        </Form>
-      </Formik>
+      {/* The user would double chick the save button and run the submit or 
+      save twice so, we should disable the click  utton twice at the time 
+      * We can get the information when we click twice the form is already submitted"
+      */}
+{(formikProps) => (
 
+<Form>
+<TextField field="name" displayName="Name" />
+<Button  disabled= {formikProps.isSubmitting} type="submit">Save</Button>
+<Link className="btn btn-secondary" to="/genres">
+  Cancle
+</Link>
+</Form>
+
+)}
+</Formik>
+
+       
       {/*
         <Button onClick={() => {
             // saving in the database

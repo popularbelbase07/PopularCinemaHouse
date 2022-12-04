@@ -4,6 +4,7 @@ export default function Button(props: buttonProps) {
   return (
     <button
       type={props.type}
+      disabled ={props.disabled}
       className="btn btn-primary"
       onClick={props.onClick}
     >
@@ -16,7 +17,9 @@ interface buttonProps {
   children: React.ReactNode;
   onClick?(): void;
   type: "button" | "submit";
+  disabled: boolean;
 }
 Button.defaultProps = {
   type: "button",
+  disabled: false
 };
