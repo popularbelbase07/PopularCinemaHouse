@@ -37,5 +37,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 * npm i --save-dev@types/react-router-dom
 
 4. Form and validation
-* npm i formik@2.2.9
+* npm i formik= form
+Yap = for validation
+npm install yup = Validation
 
