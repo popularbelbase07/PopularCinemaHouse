@@ -1,4 +1,3 @@
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -36,3 +35,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 3. Install React-Router-Dom and need to install following types becuse using typescript.
 * npm i react-router-dom@5.2
 * npm i --save-dev@types/react-router-dom
+
+4. Form and validation
+* npm i formik@2.2.9
+
