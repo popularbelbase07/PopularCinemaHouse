@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom"
+import GenresForm from "./GenresForm";
 
 export default function EditGenre(){
 
@@ -6,7 +7,14 @@ export default function EditGenre(){
     return (
         <>
         <h3>Edit Genre</h3> 
-        The Id is {id}       
+        <GenresForm
+        model={{ name: "Action" }}
+        onSubmit={async (value) => {
+          await new Promise((r) => setTimeout(r, 1000));
+          console.log(id);
+          console.log(value);
+        }}
+      />
         
         </>
     )
