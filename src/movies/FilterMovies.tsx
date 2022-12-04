@@ -34,7 +34,6 @@ export default function FilterMovies() {
                   {...formikProps.getFieldProps("title")}
                 />
               </div>
-             
 
               <div className="col-auto">
                 <select
@@ -50,18 +49,21 @@ export default function FilterMovies() {
                 </select>
               </div>
 
-            <div className="col-auto">
-              <div className="form-check">
-                <Field
-                  className="form-check-input"
-                  id="upcommingReleases"
-                  name="upcommingReleases"
-                  type="checkbox"
-                />
-                <label className="form-check-label" htmlFor="upcommingReleases">
-                  Upcomming Releases
-                </label>
-              </div>
+              <div className="col-auto">
+                <div className="form-check">
+                  <Field
+                    className="form-check-input"
+                    id="upcommingReleases"
+                    name="upcommingReleases"
+                    type="checkbox"
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="upcommingReleases"
+                  >
+                    Upcomming Releases
+                  </label>
+                </div>
               </div>
 
               <div className="col-auto">
