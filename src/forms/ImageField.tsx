@@ -1,8 +1,6 @@
-import { rejects } from "assert";
 import { useFormikContext } from "formik";
-import { resolve } from "path";
 import { ChangeEvent, useState } from "react";
-import { string } from "yup";
+
 
 export default function ImageField(props: imageFieldProps) {
   const [imageBase64, setImageBase64] = useState("");

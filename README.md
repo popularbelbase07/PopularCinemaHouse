@@ -41,3 +41,5 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 Yap = for validation
 npm install yup = Validation
 
+npm install react-markdown typed-react-markdown
+
