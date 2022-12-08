@@ -33,10 +33,10 @@ const routes = [
 
     {path: '/movietheaters', component: IndexMovieTheaters, exact: true},
     {path: '/movietheaters/create', component: CreateMovieTheater},
-    {path: '/movietheaters/edit:id(\\d+)', component: EditMovieTheater},
+    {path: '/movietheaters/edit/:id(\\d+)', component: EditMovieTheater},
 
     {path: '/movies/create', component: CreateMovie},
-    {path: '/movies/edit:id(\\d+)', component: EditMovie},
+    {path: '/movies/edit/:id(\\d+)', component: EditMovie},
     {path: '/movies/filter', component: FilterMovies},
    
 
