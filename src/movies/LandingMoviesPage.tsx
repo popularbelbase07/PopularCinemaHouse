@@ -22,16 +22,28 @@ export default function LandingMoviesPage(){
               poster:
                 "https://upload.wikimedia.org/wikipedia/en/d/d6/Avatar_%282009_film%29_poster.jpg",
             },
+            {
+              id: 3,
+              title: "Titanic",
+              poster:
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbpHCypz73IgkoYYqKzBIMuJ5cjDoZif3efw&usqp=CAU",
+            },
+            {
+              id: 4,
+              title: "Dirty Game",
+              poster:
+                "https://i1.sndcdn.com/artworks-000283552511-tjcmps-t500x500.jpg",
+            },
           ],
           upcommingReleases: [
             {
-              id: 3,
+              id: 5,
               title: "Star Wars",
               poster:
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9BaTUkwzpi_3cUYj_Gaws2fZc7qMGwbuzlA&usqp=CAU",
             },
             {
-              id: 4,
+              id: 6,
               title: "Dragen",
               poster:
                 "https://m.media-amazon.com/images/M/MV5BNDFiYjA4N2ItMjAxYy00YWY5LTk2YTUtNjg2OGQwMzU5MDA4XkEyXkFqcGdeQXVyNDUxNjc5NjY@._V1_.jpg",
