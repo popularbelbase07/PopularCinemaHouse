@@ -41,5 +41,23 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 Yap = for validation
 npm install yup = Validation
 
-npm install react-markdown typed-react-markdown
+5. This package is a React component that can be given a string of markdown that it’ll safely render to React elements. You can pass plugins to change how markdown is transformed to React elements and pass components that will be used instead of normal HTML elements.
+
+* npm install react-markdown typed-react-markdown
+
+6. Leaflet is the leading open-source JavaScript library for mobile-friendly interactive maps. 
+
+* npm install react react-dom leaflet
+
+*  npm install react-leaflet   
+
+* npm i -D @types/leaflet(For typescript)
+
+* npm install --save-exact leaflet@1.7.1 react-leaflet@3.1.0 @react-leaflet/core@1.0.2 (Optional)
+
+
+
+
+
+
 

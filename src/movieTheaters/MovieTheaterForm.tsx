@@ -4,6 +4,7 @@ import TextField from "../forms/TextField";
 import Button from "../Utils/Button";
 import { MovieTheaterCreationDTO } from "./MovieTheater.model";
 import * as Yup from "yup";
+import Map from "../Utils/MapContainer/Map";
 
 export default function MovieTheaterForm(props: movieTheaterForm) {
   return (
@@ -19,6 +20,10 @@ export default function MovieTheaterForm(props: movieTheaterForm) {
       {(formikProps) => (
         <Form>
           <TextField displayName="Name" field="name" />
+          <div style={{marginBottom: '1rem'}}>
+          <Map/>
+          </div>
+         
 
           <Button disabled={formikProps.isSubmitting} type="submit">
             Save

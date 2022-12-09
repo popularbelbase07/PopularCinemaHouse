@@ -32,7 +32,7 @@ export default function GenreForm(props: genreFormProps) {
             Save
           </Button>
           <Link className="btn btn-secondary" to="/genres">
-            Cancle
+            Cancel
           </Link>
         </Form>
       )}
