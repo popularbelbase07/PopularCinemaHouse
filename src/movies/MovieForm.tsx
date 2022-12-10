@@ -7,12 +7,29 @@ import TextField from "../forms/TextField";
 import DateField from "../forms/DateField";
 import ImageField from "../forms/ImageField";
 import CheckBoxField from "../forms/CheckBoxField";
+import MultipleSelector, { multipleSelectorModel } from "../forms/MultipleSelactor";
+import { genreDTO } from "../genres/Genres.model";
+import { useState } from "react";
 
 export default function MovieForm(props: movieFormProps) {
+// Selected and nonSelected genres has map from the array of the object using hooks
+const [selectedGenres, setSelectedGenres] = useState(mapToModel(props.selectedGenres));
+const [nonSelectedGenres, setNonSelectedGenres] = useState(mapToModel(props.nonSelectedGenres))
+
+function mapToModel(items: {id: number, name: string}[]):multipleSelectorModel[] {
+  return items.map(item => {
+    return {key: item.id, value: item.name}
+  })
+
+}
+
   return (
     <Formik
       initialValues={props.model}
-      onSubmit={props.onSubmit}
+      onSubmit={(values, actions) =>{
+        values.genresIds = selectedGenres.map(item => item.key);        
+        props.onSubmit(values, actions)
+      }}
       validationSchema={Yup.object({
         title: Yup.string()
           .required("This field is required")
@@ -29,6 +46,15 @@ export default function MovieForm(props: movieFormProps) {
             displayName=" Movie Poster"
             field="poster"
             imageURL={props.model.posterURL}
+          />
+          <MultipleSelector
+          displayName="Genres"
+          nonSelected={nonSelectedGenres}
+          selected={selectedGenres}
+          onChange = {(selected, nonSelected) => {
+setSelectedGenres(selected);
+setNonSelectedGenres(nonSelected);
+          }}
           />
 
           <Button disabled={formikProps.isSubmitting} type="submit">
@@ -48,4 +74,9 @@ interface movieFormProps {
     values: movieCreationDTO,
     actions: FormikHelpers<movieCreationDTO>
   ): void;
+  selectedGenres: genreDTO[];
+  nonSelectedGenres: genreDTO[];
+
 }
+
+

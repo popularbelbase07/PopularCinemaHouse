@@ -15,6 +15,7 @@ trailer: string;
 releaseDate?: Date;
 poster?: File;
 posterURL?: string;
+genresIds?: number[];
 
 }
 

@@ -1,4 +1,5 @@
-import './MultipleSelector,css'
+import './MultipleSelector.css';
+
 export default function MultipleSelector( props: multipleSelectorProps){
 
 
@@ -67,7 +68,7 @@ displayName: string;
     selected: multipleSelectorModel[];
     nonSelected: multipleSelectorModel[];
     onChange(selected: multipleSelectorModel[],
-        nonSelected: multipleSelectorModel[]):any
+        nonSelected: multipleSelectorModel[]): void;
 
 }
 export interface multipleSelectorModel{
