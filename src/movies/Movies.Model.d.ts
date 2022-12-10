@@ -8,6 +8,16 @@ export interface movieDTO{
 
 }
 
+export interface movieCreationDTO {
+title: string;
+inTheaters: boolean;
+trailer: string;
+releaseDate?: Date;
+poster?: File;
+posterURL?: string;
+
+}
+
 
 export interface LandingPageDTO{
     inTheaters? : movieDTO[];
