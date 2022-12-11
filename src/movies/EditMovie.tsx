@@ -26,6 +26,7 @@ const selectedMovieTheater: movieTheaterDTO[] = [{id:2, name: 'Jay Santoshi Ma'}
         
         nonSelectedMovieTheater= {nonSelectedMovieTheater}
         selectedMovieTheaters = {selectedMovieTheater}
+        selectedActors = {[]}
         />
        
         </>

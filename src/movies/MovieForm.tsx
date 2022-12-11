@@ -14,6 +14,7 @@ import { genreDTO } from "../genres/Genres.model";
 import { useState } from "react";
 import { movieTheaterDTO } from "../movieTheaters/MovieTheater.model";
 import TypeAheadActors from "../forms/TypeAheadActors";
+import { actorsMovieDTO } from "../actors/Actors.model";
 
 export default function MovieForm(props: movieFormProps) {
   // Selected and nonSelected genres has map from the array of the object using hooks
@@ -25,9 +26,11 @@ export default function MovieForm(props: movieFormProps) {
   );
 
   // Same things for movie theaters that helps the moviecan be showing in several cinema houses.
-
 const [selectedMovieTheaters, setSelectedMovieTheaters] = useState(mapToModel(props.selectedMovieTheaters));
 const [nonSelectedMovieTheaters, setNonSelectedMovieTheaters] = useState(mapToModel(props.nonSelectedMovieTheater))
+
+// create The react hook for working with displaying actors
+const [selectedActor, setSelectedActor] = useState(props.selectedActors);
 
   function mapToModel(
     items: { id: number; name: string }[]
@@ -83,7 +86,10 @@ const [nonSelectedMovieTheaters, setNonSelectedMovieTheaters] = useState(mapToMo
           />
           <TypeAheadActors
           displayName="Filter by Actors or Actress Name"
-          actors={[]}
+          actors={selectedActor}
+          onAdd= {actors => {
+            setSelectedActor(actors);
+          }}
 
           />
 
@@ -108,4 +114,5 @@ interface movieFormProps {
   nonSelectedGenres: genreDTO[];
   selectedMovieTheaters: movieTheaterDTO[];
   nonSelectedMovieTheater: movieTheaterDTO[];
+  selectedActors: actorsMovieDTO[];
 }

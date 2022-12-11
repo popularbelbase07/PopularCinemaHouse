@@ -11,15 +11,25 @@ const actors: actorsMovieDTO[] = [
     {    id: 3, name: "Leanardo", character: "Lead Actor", picture: "https://upload.wikimedia.org/wikipedia/commons/2/25/Leonardo_DiCaprio_2014.jpg" }
 
 ]
+  
+
+//to remove the actor from the typeahead actor name after actor would be selected
+const selected : actorsMovieDTO[] = [];
 
     return(
         <div 
-        className="mb-5">
+        className="mb-3">
         <label>{props.displayName}</label>
         <Typeahead
         id="typeahead"
-        onChange = {actor => {
-            console.log(actor)
+        onChange = {actors => {
+            //console.log(actors)
+            // if the actor is already present then not going to add any actor 
+            if(props.actors.findIndex(x => x.id === actors[0].id) === -1){
+                props.onAdd([...props.actors, actors[0]]);
+            }
+            
+
 
         }}
         options= {actors}
@@ -28,9 +38,30 @@ const actors: actorsMovieDTO[] = [
         filterBy= {['name']}
         placeholder="Write the name of the actor..."
         minLength={1} 
+        flip = {true}
+        selected = {selected}
+        //display the picture of the actor
+        renderMenuItemChildren = { actor => (
+            <>
+            <img
+            alt="actor" src= {actor.picture}
+            style= {{
+                height:"64px",
+                marginRight:"10px",
+                width: '64px'
+            }}
+            />  
+            <span>{actor.name}</span>
+            </>
+        )
+
+        }
         />
         
-        
+        <ul className="list-group"
+        >
+            {props.actors.map(actor => <li key = {actor.id}>{actor.name}</li>)}
+             </ul>
         </div>
     )
 }
@@ -38,4 +69,6 @@ const actors: actorsMovieDTO[] = [
 interface typeAheadActorsProps{
     displayName: string;
     actors: actorsMovieDTO[];
+    onAdd(actors: actorsMovieDTO[]) : void;
+
 }
