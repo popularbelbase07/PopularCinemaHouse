@@ -55,6 +55,12 @@ npm install yup = Validation
 
 * npm install --save-exact leaflet@1.7.1 react-leaflet@3.1.0 @react-leaflet/core@1.0.2 (Optional)
 
+7. Install Typeahead : It is a javascript library to provide the rebust
+
+* npm i react-bootstrap-typeahead@5.1.4
+
+* npm i -D @types/react-bootstrap-typeahead@5.1.4 ( for typescript)
+
 
 
 

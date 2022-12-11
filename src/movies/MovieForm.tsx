@@ -13,6 +13,7 @@ import MultipleSelector, {
 import { genreDTO } from "../genres/Genres.model";
 import { useState } from "react";
 import { movieTheaterDTO } from "../movieTheaters/MovieTheater.model";
+import TypeAheadActors from "../forms/TypeAheadActors";
 
 export default function MovieForm(props: movieFormProps) {
   // Selected and nonSelected genres has map from the array of the object using hooks
@@ -79,6 +80,11 @@ const [nonSelectedMovieTheaters, setNonSelectedMovieTheaters] = useState(mapToMo
               setSelectedMovieTheaters(selected);
               setNonSelectedMovieTheaters(nonSelected);
             }}
+          />
+          <TypeAheadActors
+          displayName="Filter by Actors or Actress Name"
+          actors={[]}
+
           />
 
           <Button disabled={formikProps.isSubmitting} type="submit">

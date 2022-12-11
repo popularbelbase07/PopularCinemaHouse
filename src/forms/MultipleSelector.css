@@ -21,7 +21,7 @@
     font-size: 15px;
 }
 
-.multiple-selector ul li :hover{
+.multiple-selector ul li:hover{
 background-color: #08c;
 
 }
