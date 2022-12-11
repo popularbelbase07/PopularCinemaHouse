@@ -1,3 +1,4 @@
+import { actorsMovieDTO } from "../actors/Actors.model"
 import { genreDTO } from "../genres/Genres.model"
 import { movieTheaterDTO } from "../movieTheaters/MovieTheater.model"
 import MovieForm from "./MovieForm"
@@ -12,6 +13,10 @@ const selectedGenres: genreDTO[] = [{id:1, name: 'Comedy'}]
 // Same things for movie theaters that helps the moviecan be showing in several cinema houses.
 const nonSelectedMovieTheater: movieTheaterDTO[] = [{id:1, name: 'Supa Deurali'} ]
 const selectedMovieTheater: movieTheaterDTO[] = [{id:2, name: 'Jay Santoshi Ma'} ]
+// sample or hard coded actor data
+const selectedActors: actorsMovieDTO[] = [
+    {    id: 1, name: "Jonny Dopp", character: "Gerelt", picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRYvUfImOGggY0xxqRN4-_F7_zrrwrLpd5mg&usqp=CAU" }
+]
 
     return(
         <>
@@ -26,7 +31,7 @@ const selectedMovieTheater: movieTheaterDTO[] = [{id:2, name: 'Jay Santoshi Ma'}
         
         nonSelectedMovieTheater= {nonSelectedMovieTheater}
         selectedMovieTheaters = {selectedMovieTheater}
-        selectedActors = {[]}
+        selectedActors = {selectedActors}
         />
        
         </>

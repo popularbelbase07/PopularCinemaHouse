@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
 import { ReactElement } from "react-markdown/lib/react-markdown";
 import { actorsMovieDTO } from "../actors/Actors.model";
@@ -12,10 +13,31 @@ const actors: actorsMovieDTO[] = [
     {    id: 3, name: "Leanardo", character: "Lead Actor", picture: "https://upload.wikimedia.org/wikipedia/commons/2/25/Leonardo_DiCaprio_2014.jpg" }
 
 ]
-  
-
-//to remove the actor from the typeahead actor name after actor would be selected
+  //to remove the actor from the Typeahead actor name after actor would be selected
 const selected : actorsMovieDTO[] = [];
+
+//Updating the UI means need to change the state that comes from react Hooks UseState
+const [draggedElement, setDraggedElement] = useState<actorsMovieDTO | undefined>(undefined);
+
+// Create a function for drag and drop menu.
+function handleDragStart(actor: actorsMovieDTO){
+    setDraggedElement(actor) 
+    }
+
+    function handleDragOver(actor:actorsMovieDTO){
+        if(!draggedElement){
+            return;
+        }
+        else if(actor.id !== draggedElement.id){
+             const draggedElementIndex = props.actors.findIndex(y => y.id === draggedElement.id);
+             const actorIndex = props.actors.findIndex(y => y.id === actor.id);  
+             const actors = [...props.actors]
+             actors[actorIndex] = draggedElement;
+             actors[draggedElementIndex] = actor;
+             props.onAdd(actors)
+        }
+    }
+
 
     return(
         <div 
@@ -62,7 +84,16 @@ const selected : actorsMovieDTO[] = [];
         <ul className="list-group"
         >
             {/* {props.actors.map(actor => <li key = {actor.id}> {actor.name} </li>)} */}
-            {props.actors.map(actor => <li key = {actor.id}
+            {props.actors.map(actor => 
+            <li 
+            key = {actor.id}
+
+            //Drag and drop menu start for the actor list
+            draggable={true}
+            onDragStart= {() => handleDragStart(actor)}
+            // The one element of the list goes over the another elemt of list should change it's own place and reOrder the list
+            onDragOver = {() => handleDragOver(actor)}
+
             className="list-group-item list-group-item-action"
             > 
             {

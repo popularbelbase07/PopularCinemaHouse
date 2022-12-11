@@ -1,3 +1,4 @@
+import { actorsMovieDTO } from './../actors/Actors.model.d';
 // .d is a type defination file
 
 // DTO : Data Transfer Object => purpose is to be data container
@@ -17,6 +18,7 @@ poster?: File;
 posterURL?: string;
 genresIds?: number[];
 movieTheaterIds?: number[];
+actors?: actorsMovieDTO[];
 
 }
 

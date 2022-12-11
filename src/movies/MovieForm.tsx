@@ -26,11 +26,15 @@ export default function MovieForm(props: movieFormProps) {
   );
 
   // Same things for movie theaters that helps the moviecan be showing in several cinema houses.
-const [selectedMovieTheaters, setSelectedMovieTheaters] = useState(mapToModel(props.selectedMovieTheaters));
-const [nonSelectedMovieTheaters, setNonSelectedMovieTheaters] = useState(mapToModel(props.nonSelectedMovieTheater))
+  const [selectedMovieTheaters, setSelectedMovieTheaters] = useState(
+    mapToModel(props.selectedMovieTheaters)
+  );
+  const [nonSelectedMovieTheaters, setNonSelectedMovieTheaters] = useState(
+    mapToModel(props.nonSelectedMovieTheater)
+  );
 
-// create The react hook for working with displaying actors
-const [selectedActor, setSelectedActor] = useState(props.selectedActors);
+  // create The react hook for working with displaying actors
+  const [selectedActor, setSelectedActor] = useState(props.selectedActors);
 
   function mapToModel(
     items: { id: number; name: string }[]
@@ -46,6 +50,8 @@ const [selectedActor, setSelectedActor] = useState(props.selectedActors);
       onSubmit={(values, actions) => {
         values.genresIds = selectedGenres.map((item) => item.key);
         values.movieTheaterIds = selectedMovieTheaters.map((item) => item.key);
+        //Add the actors that are selected while doing dropdown
+        values.actors = selectedActor;
         props.onSubmit(values, actions);
       }}
       validationSchema={Yup.object({
@@ -75,7 +81,7 @@ const [selectedActor, setSelectedActor] = useState(props.selectedActors);
             }}
           />
 
-<MultipleSelector
+          <MultipleSelector
             displayName="Movie Theaters"
             nonSelected={nonSelectedMovieTheaters}
             selected={selectedMovieTheaters}
@@ -85,36 +91,37 @@ const [selectedActor, setSelectedActor] = useState(props.selectedActors);
             }}
           />
           <TypeAheadActors
-          displayName="Filter by Actors or Actress Name"
-          actors={selectedActor}
-          onAdd= {actors => {
-            setSelectedActor(actors);
-          }}
-//Call onRemove function
-onRemove = {actor => {
-  const actors = selectedActor.filter(x => x !==actor);
-  setSelectedActor(actors);  
-}}
+            displayName="Filter by Actors or Actress Name"
+            actors={selectedActor}
+            onAdd={(actors) => {
+              setSelectedActor(actors);
+            }}
+            //Call onRemove function
+            onRemove={(actor) => {
+              const actors = selectedActor.filter((x) => x !== actor);
+              setSelectedActor(actors);
+            }}
+            //The actor choose field displaying space is limited so i should add the TextBox UI.
+            //And need to be delete the actor from the list.
+            listUI={(actor: actorsMovieDTO) => (
+              <>
+                {actor.name} /{" "}
+                <input
+                  placeholder="Character"
+                  type="text"
+                  value={actor.character}
+                  onChange={(e) => {
+                    const index = selectedActor.findIndex(
+                      (x) => x.id === actor.id
+                    );
 
-          //The actor choose field displaying space is limited so i should add the TextBox UI. 
-          //And need to be delete the actor from the list.
-          listUI= {(actor: actorsMovieDTO) =>
-            <>
-          {actor.name} / <input placeholder="Character" type="text"
-          value = {actor.character}
-
-          onChange = {e => {
-            const index = selectedActor.findIndex(x => x.id === actor.id);
-
-            const actors = [...selectedActor]
-            actors[index].character = e.currentTarget.value;
-            setSelectedActor(actors);
-          }} />
-          
-          </>
-          
-          }
-
+                    const actors = [...selectedActor];
+                    actors[index].character = e.currentTarget.value;
+                    setSelectedActor(actors);
+                  }}
+                />
+              </>
+            )}
           />
 
           <Button disabled={formikProps.isSubmitting} type="submit">
