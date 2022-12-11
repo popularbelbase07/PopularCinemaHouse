@@ -90,6 +90,30 @@ const [selectedActor, setSelectedActor] = useState(props.selectedActors);
           onAdd= {actors => {
             setSelectedActor(actors);
           }}
+//Call onRemove function
+onRemove = {actor => {
+  const actors = selectedActor.filter(x => x !==actor);
+  setSelectedActor(actors);  
+}}
+
+          //The actor choose field displaying space is limited so i should add the TextBox UI. 
+          //And need to be delete the actor from the list.
+          listUI= {(actor: actorsMovieDTO) =>
+            <>
+          {actor.name} / <input placeholder="Character" type="text"
+          value = {actor.character}
+
+          onChange = {e => {
+            const index = selectedActor.findIndex(x => x.id === actor.id);
+
+            const actors = [...selectedActor]
+            actors[index].character = e.currentTarget.value;
+            setSelectedActor(actors);
+          }} />
+          
+          </>
+          
+          }
 
           />
 

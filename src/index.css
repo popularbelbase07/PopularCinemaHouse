@@ -14,3 +14,9 @@ code {
 form > a {
   margin-left: 1rem;
 }
+
+/* The following css is for TypeAheadActors pointer */
+
+.pointer{
+  cursor: pointer;
+  }

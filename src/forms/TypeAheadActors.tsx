@@ -1,4 +1,5 @@
 import { Typeahead } from "react-bootstrap-typeahead";
+import { ReactElement } from "react-markdown/lib/react-markdown";
 import { actorsMovieDTO } from "../actors/Actors.model";
 
 // The parent component is MovieForm.tsx
@@ -60,7 +61,21 @@ const selected : actorsMovieDTO[] = [];
         
         <ul className="list-group"
         >
-            {props.actors.map(actor => <li key = {actor.id}>{actor.name}</li>)}
+            {/* {props.actors.map(actor => <li key = {actor.id}> {actor.name} </li>)} */}
+            {props.actors.map(actor => <li key = {actor.id}
+            className="list-group-item list-group-item-action"
+            > 
+            {
+                props.listUI(actor)
+            }
+             <span className="badge badge-danger badge-pill pointer text-dark"
+             style={{marginLeft: '0.5rem'}}
+             onClick={() => props.onRemove(actor)}
+             >
+                Delete
+             </span>
+
+            </li>)}
              </ul>
         </div>
     )
@@ -70,5 +85,7 @@ interface typeAheadActorsProps{
     displayName: string;
     actors: actorsMovieDTO[];
     onAdd(actors: actorsMovieDTO[]) : void;
+    listUI(actor : actorsMovieDTO) : ReactElement;
+    onRemove(actor:actorsMovieDTO): void;
 
 }
