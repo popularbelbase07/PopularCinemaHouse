@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Footer from "./Footer/Footer";
 import Menu from "./navBar/Menu";
 import routes from "./Urls/Route-config";
 import configureValidations from "./validationForm/Validation";
@@ -19,6 +20,8 @@ function App() {
             </Route>)}
         </Switch>
       </div>
+      <br/>
+      <Footer/>
     </BrowserRouter>
   );
 }
