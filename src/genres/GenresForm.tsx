@@ -17,7 +17,7 @@ export default function GenreForm(props: genreFormProps) {
       // Installation of Yup for validation of the form
       validationSchema={Yup.object({
         name: Yup.string()
-          .required("This field is required !!!")
+          .required("This field is required !!!").max(50,'Maxmium length is 50 characters')
           .firstLetterUppercase(),
       })}
     >
