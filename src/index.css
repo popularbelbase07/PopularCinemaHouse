@@ -20,3 +20,9 @@ form > a {
 .pointer{
   cursor: pointer;
   }
+
+  /* Margin for genre Table*/
+
+  .table  a {
+    margin-right: 1rem;
+  }
