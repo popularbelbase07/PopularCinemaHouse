@@ -21,7 +21,7 @@ export default function Pagination(props: paginationProps) {
     if (!link.enabled) {
       return "disabled";
     }
-    return "Pointer";
+    return "pointer";
   }
 
   useEffect(
@@ -46,42 +46,43 @@ export default function Pagination(props: paginationProps) {
             text: `${i}`,
             active: props.currentPage === i,
             enabled: true,
-            page: i,
-          });
+            page: i
+          })
         }
       }
 
       const nextPageEnabled =
         props.currentPage !== props.totalAmountOfPages &&
         props.totalAmountOfPages > 0;
+
       const nextPage = props.currentPage + 1;
 
       links.push({
         text: "Next",
         page: nextPage,
         enabled: nextPageEnabled,
-        active: false,
-      });
+        active: false
+      })
+
       setLinkModels(links);
     }, // Use effect react hooks dependencies
     [props.currentPage, props.totalAmountOfPages, props.radio]
-  );
+  )
 
-  return (
-    <nav>
-      <ul className="pagination justify-content-center">
-        {linkModels.map((link) => (
-          <li
-            key={link.text}
-            onClick={() => selectPage(link)}
-            className={`page-item cursor ${getClass(link)}`}
-          >
-            <span className="page-link">{link.text}</span>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
+  return <nav>
+                <ul className="pagination justify-content-center">
+                  {linkModels.map(link => 
+                    <li
+                      key={link.text}
+                      onClick={() => selectPage(link)}
+                      className={`page-item cursor ${getClass(link)}`}
+                    >
+                      <span className="page-link">{link.text}</span>
+                    </li>
+                  )}
+                </ul>
+          </nav>
+  
 }
 
 interface linkModel {
@@ -97,3 +98,7 @@ interface paginationProps {
   radio: number;
   onChange(page: number): void;
 }
+
+Pagination.defaultProps = {
+  radio: 3
+  }
