@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { urlGenres } from "../endpoints";
 import Button from "../Utils/Button";
+import CustomConfirm from "../Utils/CustomConfirm";
 import DropDownRecordsPerPage from "../Utils/DropDownRecordPerPage";
 import GenericList from "../Utils/GenericList";
 import Pagination from "../Utils/Pagination";
@@ -22,23 +23,44 @@ export default function IndexGenres() {
   //const GenreURL ="https://localhost:7246/api/Genres";
   useEffect(
       () => {
-          axios.get(urlGenres, {
-          // Pass the param that helps to fetch the data from the web api and pass the dependencies to change the pages
-            params: {page, recordPerPage}
-          })
-          
-            .then((response: AxiosResponse<genreDTO[]>) => {
-            // implementating Pagination inside the hook
-            const totalAmountOfRecords =
-
-            parseInt(response.headers["totalamountofrecords"], 10)
-            setTotalAmountOfPages(Math.ceil(totalAmountOfRecords/recordPerPage)); 
-            setGenres(response.data);
-            //console.log(response.data)            
-          });
-          
+        loadData();  
       }, [page, recordPerPage]  
   )
+  function loadData()
+{
+  axios.get(urlGenres, {
+    // Pass the param that helps to fetch the data from the web api and pass the dependencies to change the pages
+      params: {page, recordPerPage}
+    })
+    
+      .then((response: AxiosResponse<genreDTO[]>) => {
+      // implementating Pagination inside the hook
+      const totalAmountOfRecords =
+
+      parseInt(response.headers["totalamountofrecords"], 10)
+      setTotalAmountOfPages(Math.ceil(totalAmountOfRecords/recordPerPage)); 
+      setGenres(response.data);
+      //console.log(response.data)            
+    });
+  }
+  // Delete the Genres
+  async function deleteGenre(id:number) {
+    try{
+      await axios.delete(`${urlGenres}/${id}`);
+      loadData();
+    }
+    catch(error){
+      if(error ){
+        console.error(error);
+        // console.error(error.response.data)
+      }
+    }
+    
+  }
+
+  function customConfirm(arg0: () => Promise<void>): void {
+    throw new Error("Function not implemented.");
+  }
 
   return (
     <>
@@ -77,7 +99,11 @@ export default function IndexGenres() {
                     Edit
                   </Link>
 
-                  <Button className="btn btn-danger">Delete</Button>
+                  <Button 
+                  onClick={() => 
+                    CustomConfirm(() => 
+                    deleteGenre(genre.id))}
+                  className="btn btn-danger">Delete</Button>
                 </th>
                 <th>{genre.name}</th>
                 

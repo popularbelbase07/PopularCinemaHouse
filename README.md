@@ -62,8 +62,14 @@ npm install yup = Validation
 * npm i -D @types/react-bootstrap-typeahead@5.1.4 ( for typescript)
 
 
-7.  Starting to communicate a backend service need to install Axios
-* npm i axios@0.21.1 
+8.  Starting to communicate a backend service need to install Axios
+
+* npm i axios@0.21.1
+
+9. Create a dialogue while delete the data from the database
+
+* npm i sweetalert2@10.16.0
+
 
 
 
