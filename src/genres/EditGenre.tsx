@@ -1,13 +1,8 @@
-import axios, { AxiosResponse } from "axios";
-import { PolyUtil } from "leaflet";
-import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom"
 import { urlGenres } from "../endpoints";
-import DisplayError from "../Utils/DisplayError";
-import Loading from "../Utils/Loading";
+import EditEntity from "../Utils/Resuable Component/EditEntity";
 import { GenreCreationDTO, genreDTO } from "./Genres.model";
 import GenresForm from "./GenresForm";
-
+/*
 export default function EditGenre(){
     const {id}: any = useParams();
     const [genre, setGenre] = useState<GenreCreationDTO>();
@@ -60,3 +55,29 @@ export default function EditGenre(){
         </>
     )
 }
+*/
+
+export default function EditGenre(){
+
+  return(
+
+    <>
+    <EditEntity<GenreCreationDTO, genreDTO>
+      url= {urlGenres} entityName="Genres"
+      indexUrl="/genres"
+      >
+
+      {(entity, editEntity) =>
+       <GenresForm  model={entity}
+       onSubmit={async (value) => {
+        await editEntity(value);
+       }}
+       />
+      }
+    </EditEntity>
+    
+    </>
+  )
+}
+
+
