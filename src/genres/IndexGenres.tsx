@@ -1,90 +1,22 @@
-import axios, { AxiosResponse } from "axios";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { urlGenres } from "../endpoints";
-import Button from "../Utils/Button";
-import CustomConfirm from "../Utils/CustomConfirm";
-import DropDownRecordsPerPage from "../Utils/DropDownRecordPerPage";
-import GenericList from "../Utils/GenericList";
-import Pagination from "../Utils/Pagination";
+import IndexEntity from "../Utils/Resuable Component/IndexEntity";
 import { genreDTO } from "./Genres.model";
 
+
 export default function IndexGenres() {
-  // create a useState hook to display the list of genres
-  const [genres, setGenres] = useState<genreDTO[]>();
 
-  // implementation of pagination in Genres using usestate variables
-  const [totalAmountOfPages, setTotalAmountOfPages] = useState(0);
-  const [recordPerPage, setRecordPerPage] = useState(5);
-  const [page, setPage] = useState(1);
+return(
+<>
+<IndexEntity<genreDTO>
+  url = {urlGenres}
+  createUrl = "genres/create"
+  title = "Genres"
+  entityName = "Genre"
 
-
-  // using react hook and axios to communicate with the backend services
-  //const GenreURL ="https://localhost:7246/api/Genres";
-  useEffect(
-      () => {
-        loadData();  
-      }, [page, recordPerPage]  
-  )
-  function loadData()
-{
-  axios.get(urlGenres, {
-    // Pass the param that helps to fetch the data from the web api and pass the dependencies to change the pages
-      params: {page, recordPerPage}
-    })
-    
-      .then((response: AxiosResponse<genreDTO[]>) => {
-      // implementating Pagination inside the hook
-      const totalAmountOfRecords =
-
-      parseInt(response.headers["totalamountofrecords"], 10)
-      setTotalAmountOfPages(Math.ceil(totalAmountOfRecords/recordPerPage)); 
-      setGenres(response.data);
-      //console.log(response.data)            
-    });
-  }
-  // Delete the Genres
-  async function deleteGenre(id:number) {
-    try{
-      await axios.delete(`${urlGenres}/${id}`);
-      loadData();
-    }
-    catch(error){
-      if(error ){
-        console.error(error);
-        // console.error(error.response.data)
-      }
-    }
-    
-  }
-
-  function customConfirm(arg0: () => Promise<void>): void {
-    throw new Error("Function not implemented.");
-  }
-
-  return (
-    <>
-      <h3>Genres</h3>
-      <Link className="btn btn-primary" to="/genres/create">
-        Create Genre
-      </Link>
-    <DropDownRecordsPerPage
-    onChange={amountOfRecords => {
-      setPage(1);
-      setRecordPerPage(amountOfRecords);
-    }}
-    />
-
-      <Pagination
-      currentPage={page}
-      totalAmountOfPages={totalAmountOfPages}
-      onChange={newPage =>(setPage(newPage))}
-
-      />
-
-      <GenericList list={genres}>
-        <table className="table table-dark table-striped">
-          <thead>
+>
+  {(genres, buttons) => <>
+  
+    <thead>
             <tr>
               <td>Actions</td>
               <td>Name</td>
@@ -92,26 +24,21 @@ export default function IndexGenres() {
           </thead>
 
           <tbody>
-            {genres?.map((genre) => (
+            {genres?.map(genre => (
               <tr key={genre.id}>
-                <th>
-                  <Link className="btn btn-success" to={`/genres/edit/${genre.id}`}>
-                    Edit
-                  </Link>
-
-                  <Button 
-                  onClick={() => 
-                    CustomConfirm(() => 
-                    deleteGenre(genre.id))}
-                  className="btn btn-danger">Delete</Button>
-                </th>
-                <th>{genre.name}</th>
+                <td>
+                 {buttons (` genres/edit/${genre.id}`, genre.id)}
+                </td>
+                <td>{genre.name}</td>
                 
               </tr>
             ))}
           </tbody>
-        </table>
-      </GenericList>
-    </>
-  );
-}
+  
+  </>
+  }
+
+</IndexEntity>
+
+</>
+)}
