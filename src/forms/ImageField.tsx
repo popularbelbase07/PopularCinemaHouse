@@ -13,7 +13,7 @@ export default function ImageField(props: imageFieldProps) {
 
 
   const divStyle = { marginTop: "10px" };
-  const imgStyle = { width: "450px" };
+  const imgStyle = { width: "250px" , height: "350px" };
 
   const handleOnChange = (eventsArgs: ChangeEvent<HTMLInputElement>) => {
     if (eventsArgs.currentTarget.files) {
