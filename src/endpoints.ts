@@ -2,4 +2,5 @@
 const baseURL = process.env.REACT_APP_API_URL;
 
 export const urlGenres = `${baseURL}/genres`;
-export const urlActors= `${baseURL}/Actors`;
+export const urlActors= `${baseURL}/actors`;
+export const urlMovieTheaters= `${baseURL}/movieTheaters`;
