@@ -12,9 +12,10 @@ export default function CreateMovieTheater() {
 
   async function create(movieTheater: MovieTheaterCreationDTO) {
     try {
-      await axios.post(urlMovieTheaters, movieTheater);
+      await axios.post(urlMovieTheaters, movieTheater); 
       history.push("/movietheaters");
-    } catch (error) {
+    } 
+    catch (error) {
       if (error) {
         setErrors(errors);
       }
@@ -26,8 +27,8 @@ export default function CreateMovieTheater() {
       <h3>Create Movie Theater</h3>
       <DisplayError errors={errors} />
       <MovieTheaterForm
-        model={{ name: " " }}
-        onSubmit={async (values) => await create(values)}
+        model={{name: ''}}
+        onSubmit = {async values => await create(values)}
       />
     </>
   );

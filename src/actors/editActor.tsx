@@ -9,13 +9,13 @@ export default function EditActor(){
 
     // return actorCreationDTO
     function transform(actor: actorDTO) : actorCreationDTO{
-return{
-    name: actor.name,
-    pictureURL : actor.picture,
-    biography: actor.biography,
-    dateOfBirth: new Date(actor.dateOfBirth)
-   
-}
+        
+        return{
+            name: actor.name,
+            pictureURL : actor.picture,
+            biography: actor.biography,
+            dateOfBirth: new Date(actor.dateOfBirth)   
+        }
     }
     return(
        <EditEntity<actorCreationDTO, actorDTO>
@@ -26,7 +26,8 @@ return{
         {(entity, edit) => 
         <ActorForm
         model={entity}
-        onSubmit={async values => await edit(values)}
+        onSubmit={async values => 
+            await edit(values)}
         />}
 
 

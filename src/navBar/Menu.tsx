@@ -1,37 +1,36 @@
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Menu(){
     return(
             <nav className="navbar navbar-expand-lg navbar-light bg-dark">
                 <div className="container-fluid">                
-                    <a className="navbar-brand text-danger" href="/"> <h1> <strong>PCH</strong></h1> </a >
+                    <NavLink className="navbar-brand text-danger" to="/"> <h1> <strong>PCH</strong></h1> </NavLink >
                         <div className="collapse navbar-collapse ">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-4">
                                 <li className="nav-item" >
-                                    <a  className="nav-link text-success"  href="/genres">
+                                    <NavLink  className="nav-link text-success" to={"/genres"}>
                                         Genres
-                                    </a>
-                                </li>
-
+                                    </NavLink>
+                                </li>                               
                                 <li className="nav-item">
-                                    <a  className="nav-link text-success" href="/movies/filter">
-                                        Filter Movies
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a  className="nav-link text-success" href="/actors">
+                                    <NavLink  className="nav-link text-success" to={"/actors"}>
                                         Actors
-                                    </a>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a  className="nav-link text-success" href="/movietheaters">
+                                    <NavLink className="nav-link text-success" to={"/movietheaters"}>
                                         Movie Theaters
-                                    </a>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a  className="nav-link text-success" href="/movies/create">
+                                    <NavLink className="nav-link text-success" to={"/movies/create"}>
                                         Create a Movie
-                                    </a>
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink  className="nav-link text-success" to={"/movies/filter"}>
+                                        Filter Movies
+                                    </NavLink>
                                 </li>
                                 
                             </ul>

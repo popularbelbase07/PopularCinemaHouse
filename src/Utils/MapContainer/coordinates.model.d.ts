@@ -1,5 +1,5 @@
 export default interface coordinateDTO{
-   langitude: number;
+   longitude: number;
    latitude: number;
 
 } 

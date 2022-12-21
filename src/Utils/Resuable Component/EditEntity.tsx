@@ -20,23 +20,25 @@ export default function EditEntity<TCreation, TRead>(
       setEntity(props.transform(response.data));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  },[id]);
 
   async function edit(entityToEdit: TCreation) {
     try {
+      
       if (props.transformFormData) { 
         const formData = props.transformFormData(entityToEdit);
         await axios({
           method: "put",
           url: `${props.url}/${id} `,
           data: formData,
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: { "Content-Type":"multipart/form-data" },
         });
       } else {
-        await axios.put(`${props.url}/${id}`, entityToEdit);
+        await axios.put(`${props.url}/${id}`,entityToEdit);
       }
       //history.push('/genres')
       history.push(props.indexUrl);
+
     } catch (error) {
       if (error) {
         setErrors(errors)
@@ -49,21 +51,22 @@ export default function EditEntity<TCreation, TRead>(
     <>
       <h3>Edit {props.entityName}</h3>
       <DisplayError errors={errors} />
-      {entity ? props.children(entity, edit) : <Loading />}
+      {entity ? props.children(entity,edit) : <Loading />}
     </>
   );
 }
 
 interface editEntityProps<TCreation, TRead> {
   url: string;
-  transform(entity: TRead): TCreation;
-  transformFormData?(model: TCreation): FormData;
   entityName: string;
+  indexUrl: string;
+  transform(entity: TRead): TCreation;
+  transformFormData?(model: TCreation): FormData;  
   children(
     entity: TCreation,
-    editEntity: (entity: TCreation) => void
+    edit:(entity: TCreation) => void
   ): ReactElement;
-  indexUrl: string;
+  
 }
 
 // Create a function  thaat helps to default implementation for transform Function

@@ -14,7 +14,7 @@ export default function IndexActors() {
         <>
           <thead>
             <tr>
-              <th></th>
+              <th>Actions</th>
               <th>Name</th>
             </tr>
           </thead>

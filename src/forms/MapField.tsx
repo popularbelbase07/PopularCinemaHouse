@@ -11,7 +11,7 @@ function handleMapClick(coordinates: coordinateDTO){
 
     // Implementation of HandleMapClick
     values[props.latField] = coordinates.latitude;
-    values[props.lngField] = coordinates.langitude;
+    values[props.lngField] = coordinates.longitude;
 
     
 }

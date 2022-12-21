@@ -53,27 +53,23 @@ export default function EditGenre(){
 }
 */
 
-export default function EditGenre(){
-
-  return(
-
+export default function EditGenre() {
+  return (
     <>
-    <EditEntity<GenreCreationDTO, genreDTO>
-      url= {urlGenres} entityName="Genres"
-      indexUrl="/genres"
+      <EditEntity<GenreCreationDTO, genreDTO>
+        url={urlGenres}
+        entityName="Genres"
+        indexUrl="/genres"
       >
-
-      {(entity, editEntity) =>
-       <GenresForm  model={entity}
-       onSubmit={async (value) => {
-        await editEntity(value);
-       }}
-       />
-      }
-    </EditEntity>
-    
+        {(entity, edit) =>
+          <GenresForm
+            model={entity}
+            onSubmit={async (values) => {
+              await edit(values);
+            }}
+          />
+        }
+      </EditEntity>
     </>
-  )
+  );
 }
-
-

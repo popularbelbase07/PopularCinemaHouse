@@ -1,20 +1,19 @@
 import { Form, Formik, FormikHelpers } from "formik";
 import { Link } from "react-router-dom";
+import * as Yup from "yup";
+import MapField from "../forms/MapField";
 import TextField from "../forms/TextField";
 import Button from "../Utils/Button";
-import { MovieTheaterCreationDTO } from "./MovieTheater.model";
-import * as Yup from "yup";
-import Map from "../Utils/MapContainer/Map";
-import MapField from "../forms/MapField";
 import coordinateDTO from "../Utils/MapContainer/coordinates.model";
+import { MovieTheaterCreationDTO } from "./MovieTheater.model";
 
 export default function MovieTheaterForm(props: movieTheaterForm) {
 
   function transformCoordinates(): coordinateDTO[] | undefined {
     if (props.model.latitude && props.model.longitude) {
       const response: coordinateDTO = {
-        langitude: props.model.longitude,
         latitude: props.model.latitude,
+        longitude: props.model.longitude        
       };
       return [response];
     }
