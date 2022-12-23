@@ -1,23 +1,33 @@
+import axios, { AxiosResponse }  from "axios";
 import { useState } from "react";
-import { Typeahead } from "react-bootstrap-typeahead";
+import { AsyncTypeahead } from "react-bootstrap-typeahead";
 import { ReactElement } from "react-markdown/lib/react-markdown";
 import { actorsMovieDTO } from "../actors/Actors.model";
+import { urlActors } from "../endpoints";
+
 
 // The parent component is MovieForm.tsx
 
 export default function TypeAheadActors(props: typeAheadActorsProps){
 
-const actors: actorsMovieDTO[] = [
-    {    id: 1, name: "Jonny Dopp", character: "Hero", picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRYvUfImOGggY0xxqRN4-_F7_zrrwrLpd5mg&usqp=CAU" },
-    {    id: 2, name: "Jessica", character: "Heroine", picture: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Jessica-Alba-The-Eye.JPG/170px-Jessica-Alba-The-Eye.JPG" },
-    {    id: 3, name: "Leanardo", character: "Lead Actor", picture: "https://upload.wikimedia.org/wikipedia/commons/2/25/Leonardo_DiCaprio_2014.jpg" }
-
-]
-  //to remove the actor from the Typeahead actor name after actor would be selected
+    const [actors, setActors] = useState<actorsMovieDTO[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
+    
+    //to remove the actor from the Typeahead actor name after actor would be selected
 const selected : actorsMovieDTO[] = [];
 
 //Updating the UI means need to change the state that comes from react Hooks UseState
 const [draggedElement, setDraggedElement] = useState<actorsMovieDTO | undefined>(undefined);
+
+function handelSearch(query:string){
+    setIsLoading (true);
+
+    axios.get(`${urlActors}/searchByName/${query}`)
+    .then((response: AxiosResponse<actorsMovieDTO[]>) => {
+        setActors(response.data);
+        setIsLoading(false);
+    })
+}
 
 // Create a function for drag and drop menu.
 function handleDragStart(actor: actorsMovieDTO){
@@ -43,22 +53,23 @@ function handleDragStart(actor: actorsMovieDTO){
         <div 
         className="mb-3">
         <label>{props.displayName}</label>
-        <Typeahead
+        <AsyncTypeahead
         id="typeahead"
         onChange = {actors => {
             //console.log(actors)
             // if the actor is already present then not going to add any actor 
             if(props.actors.findIndex(x => x.id === actors[0].id) === -1){
+                actors[0].character = '';
                 props.onAdd([...props.actors, actors[0]]);
             }
-            
-
-
         }}
         options= {actors}
         // This refer to the value want to use to display the option.
         labelKey = {actor => actor.name}
-        filterBy= {['name']}
+        //filterBy= {['name']}
+        filterBy={() => true}
+        isLoading= {isLoading}
+        onSearch= {handelSearch}
         placeholder="Write the name of the actor..."
         minLength={1} 
         flip = {true}
@@ -120,3 +131,15 @@ interface typeAheadActorsProps{
     onRemove(actor:actorsMovieDTO): void;
 
 }
+
+
+/*
+
+
+const actors: actorsMovieDTO[] = [
+    {    id: 1, name: "Jonny Dopp", character: "Hero", picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRYvUfImOGggY0xxqRN4-_F7_zrrwrLpd5mg&usqp=CAU" },
+    {    id: 2, name: "Jessica", character: "Heroine", picture: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Jessica-Alba-The-Eye.JPG/170px-Jessica-Alba-The-Eye.JPG" },
+    {    id: 3, name: "Leanardo", character: "Lead Actor", picture: "https://upload.wikimedia.org/wikipedia/commons/2/25/Leonardo_DiCaprio_2014.jpg" }
+
+]
+*/
