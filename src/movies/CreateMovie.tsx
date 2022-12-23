@@ -1,12 +1,11 @@
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
-import { moviePostGetDTO } from "./Movies.Model";
-import Loading from "../Utils/Loading";
 import { urlMovies } from "../endpoints";
 import { genreDTO } from "../genres/Genres.model";
 import { movieTheaterDTO } from "../movieTheaters/MovieTheater.model";
+import Loading from "../Utils/Loading";
 import MovieForm from "./MovieForm";
-import { idText } from "typescript";
+import { moviePostGetDTO } from "./Movies.Model";
 
 export default function CreateMovie(){
 

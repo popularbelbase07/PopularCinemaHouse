@@ -1,4 +1,3 @@
-import { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Footer from "./Footer/Footer";
 import Menu from "./navBar/Menu";
