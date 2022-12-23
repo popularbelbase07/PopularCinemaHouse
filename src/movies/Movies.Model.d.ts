@@ -1,3 +1,5 @@
+import { movieTheaterDTO } from './../movieTheaters/MovieTheater.model.d';
+import { genreDTO } from './../genres/Genres.model.d';
 import { actorsMovieDTO } from './../actors/Actors.model.d';
 // .d is a type defination file
 
@@ -26,4 +28,9 @@ actors?: actorsMovieDTO[];
 export interface LandingPageDTO{
     inTheaters? : movieDTO[];
     upcommingReleases? : movieDTO[]
+}
+
+export interface moviePostGetDTO{
+    genres: genreDTO[];
+    movieTheaters: movieTheaterDTO[];
 }

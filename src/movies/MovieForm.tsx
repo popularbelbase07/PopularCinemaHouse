@@ -29,7 +29,7 @@ export default function MovieForm(props: movieFormProps) {
   const [selectedMovieTheaters, setSelectedMovieTheaters] = useState(
     mapToModel(props.selectedMovieTheaters)
   );
-  const [nonSelectedMovieTheaters, setNonSelectedMovieTheaters] = useState(
+  const [nonSelectedMovieTheater, setNonSelectedMovieTheaters] = useState(
     mapToModel(props.nonSelectedMovieTheater)
   );
 
@@ -39,7 +39,7 @@ export default function MovieForm(props: movieFormProps) {
   function mapToModel(
     items: { id: number; name: string }[]
   ): multipleSelectorModel[] {
-    return items.map((item) => {
+    return items?.map(item => {
       return { key: item.id, value: item.name };
     });
   }
@@ -48,8 +48,8 @@ export default function MovieForm(props: movieFormProps) {
     <Formik
       initialValues={props.model}
       onSubmit={(values, actions) => {
-        values.genresIds = selectedGenres.map((item) => item.key);
-        values.movieTheaterIds = selectedMovieTheaters.map((item) => item.key);
+        values.genresIds = selectedGenres?.map((item) => item.key);
+        values.movieTheaterIds = selectedMovieTheaters?.map(item => item.key);
         //Add the actors that are selected while doing dropdown
         values.actors = selectedActor;
         props.onSubmit(values, actions);
@@ -83,7 +83,7 @@ export default function MovieForm(props: movieFormProps) {
 
           <MultipleSelector
             displayName="Movie Theaters"
-            nonSelected={nonSelectedMovieTheaters}
+            nonSelected={nonSelectedMovieTheater}
             selected={selectedMovieTheaters}
             onChange={(selected, nonSelected) => {
               setSelectedMovieTheaters(selected);

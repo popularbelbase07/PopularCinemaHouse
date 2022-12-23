@@ -40,7 +40,7 @@ return(
 
 <div className="multiple-selector">
             <ul>
-                {props.nonSelected.map(item => 
+                {props.nonSelected?.map(item => 
                    <li key={item.key} onClick = {() => {select(item)}}>{item.value}</li> 
                     )}
             </ul>
@@ -50,7 +50,7 @@ return(
 
             </div>
             <ul>
-                {props.selected.map(item => 
+                {props.selected?.map(item => 
                    <li key={item.key} onClick = {() => {deSelect(item)}}>{item.value}</li> 
                     )}
             </ul>
