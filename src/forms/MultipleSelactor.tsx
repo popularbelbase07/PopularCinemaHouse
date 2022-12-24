@@ -38,7 +38,7 @@ return(
     <div className="mb-3">
         <label htmlFor="">{props.displayName}</label>
 
-<div className="multiple-selector">
+    <div className="multiple-selector">
             <ul>
                 {props.nonSelected?.map(item => 
                    <li key={item.key} onClick = {() => {select(item)}}>{item.value}</li> 

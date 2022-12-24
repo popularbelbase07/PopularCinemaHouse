@@ -1,18 +1,22 @@
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { urlMovies } from "../endpoints";
 import { genreDTO } from "../genres/Genres.model";
 import { movieTheaterDTO } from "../movieTheaters/MovieTheater.model";
+import { convertMovieToFormData } from "../Utils/actorFormDataUtils";
+import DisplayError from "../Utils/DisplayError";
 import Loading from "../Utils/Loading";
 import MovieForm from "./MovieForm";
-import { moviePostGetDTO } from "./Movies.Model";
+import { movieCreationDTO, moviePostGetDTO } from "./Movies.Model";
 
 export default function CreateMovie(){
 
     const [nonSelectedGenres, setNonSelectedGenres] = useState<genreDTO[]>([]);
-    
+    const[errors, setErrors] = useState<string[]>([]);    
     const [nonSelectedMovieTheater, setNonSelectedMovieTheater] = useState<movieTheaterDTO[]>([]);
     const [loading, setLoading] = useState(true);
+    const history = useHistory();
 
     useEffect(() =>{
 
@@ -26,13 +30,31 @@ export default function CreateMovie(){
         })
     }, [])
 
+    async function create(movie: movieCreationDTO){
+        try{
+            const formData = convertMovieToFormData(movie);
+            const response =  await axios({
+                method: 'post',
+                url: urlMovies,
+                data: formData,
+                headers: {'Content-Type': 'multipart/form-data'}
+            })
+            history.push(`/movies/${response.data}`);
+        }
+        catch(error){
+       // setErrors(error.response.data)
+       setErrors(errors)
+        }
+    }
+
     return(
         <>
         <h3>Create Movie</h3>
+        <DisplayError errors={errors}/>
         {loading ? <Loading/> : 
             <MovieForm
             model = {{title: '', inTheaters:false, trailer: ''}}
-            onSubmit={values => console.log(values)}
+            onSubmit={ async values => await create(values)}
             nonSelectedGenres = {nonSelectedGenres}
             selectedGenres = {[]}
            nonSelectedMovieTheater = {nonSelectedMovieTheater}

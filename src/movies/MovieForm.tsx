@@ -15,6 +15,7 @@ import { useState } from "react";
 import { movieTheaterDTO } from "../movieTheaters/MovieTheater.model";
 import TypeAheadActors from "../forms/TypeAheadActors";
 import { actorsMovieDTO } from "../actors/Actors.model";
+import MarkDownField from "../forms/MarkdownField";
 
 export default function MovieForm(props: movieFormProps) {
   // Selected and nonSelected genres has map from the array of the object using hooks
@@ -69,8 +70,14 @@ export default function MovieForm(props: movieFormProps) {
           <ImageField
             displayName=" Movie Poster"
             field="poster"
-            imageURL={props.model.posterURL}
+            //imageURL={props.model.posterURL}
+            imageURL=""
           />
+          <MarkDownField 
+            displayName="Summary" 
+            field = "summary"
+          />
+
           <MultipleSelector
             displayName="Genres"
             nonSelected={nonSelectedGenres}
