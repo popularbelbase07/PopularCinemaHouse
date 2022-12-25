@@ -18,9 +18,9 @@ trailer: string;
 releaseDate?: Date;
 summary?: string;
 poster?: File;
-//posterURL?: string;
+posterURL?: string;
 genresIds?: number[];
-movieTheaterIds?: number[];
+movieTheatersIds?: number[];
 actors?: actorsMovieDTO[];
 
 }

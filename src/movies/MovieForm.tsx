@@ -12,10 +12,10 @@ import MultipleSelector, {
 } from "../forms/MultipleSelactor";
 import { genreDTO } from "../genres/Genres.model";
 import { useState } from "react";
-import { movieTheaterDTO } from "../movieTheaters/MovieTheater.model";
 import TypeAheadActors from "../forms/TypeAheadActors";
 import { actorsMovieDTO } from "../actors/Actors.model";
 import MarkDownField from "../forms/MarkdownField";
+import { movieTheatersDTO } from "../movieTheaters/MovieTheater.model";
 
 export default function MovieForm(props: movieFormProps) {
   // Selected and nonSelected genres has map from the array of the object using hooks
@@ -50,7 +50,7 @@ export default function MovieForm(props: movieFormProps) {
       initialValues={props.model}
       onSubmit={(values, actions) => {
         values.genresIds = selectedGenres?.map((item) => item.key);
-        values.movieTheaterIds = selectedMovieTheaters?.map(item => item.key);
+        values.movieTheatersIds = selectedMovieTheaters?.map(item => item.key);
         //Add the actors that are selected while doing dropdown
         values.actors = selectedActor;
         props.onSubmit(values, actions);
@@ -70,8 +70,7 @@ export default function MovieForm(props: movieFormProps) {
           <ImageField
             displayName=" Movie Poster"
             field="poster"
-            //imageURL={props.model.posterURL}
-            imageURL=""
+            imageURL={props.model.posterURL}            
           />
           <MarkDownField 
             displayName="Summary" 
@@ -150,7 +149,7 @@ interface movieFormProps {
   ): void;
   selectedGenres: genreDTO[];
   nonSelectedGenres: genreDTO[];
-  selectedMovieTheaters: movieTheaterDTO[];
-  nonSelectedMovieTheater: movieTheaterDTO[];
+  selectedMovieTheaters: movieTheatersDTO[];
+  nonSelectedMovieTheater: movieTheatersDTO[];
   selectedActors: actorsMovieDTO[];
 }

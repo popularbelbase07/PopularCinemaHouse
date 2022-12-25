@@ -40,7 +40,7 @@ export function convertActorToFormData(actor: actorCreationDTO): FormData
         }
 
         formData.append('genresIds', JSON.stringify(movie.genresIds))
-        formData.append('movieTheatersIds', JSON.stringify(movie.movieTheaterIds))
+        formData.append('movieTheatersIds', JSON.stringify(movie.movieTheatersIds))
         formData.append('actors', JSON.stringify(movie.actors))
 
         return formData;

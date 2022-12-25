@@ -1,10 +1,10 @@
 import { urlMovieTheaters } from "../endpoints";
 import IndexEntity from "../Utils/Resuable Component/IndexEntity";
-import { movieTheaterDTO } from "./MovieTheater.model";
+import { movieTheatersDTO } from "./MovieTheater.model";
 
 export default function MovieTheaters(){
     return(
-        <IndexEntity<movieTheaterDTO>
+        <IndexEntity<movieTheatersDTO>
         url={urlMovieTheaters}
         createUrl="/movietheaters/create"
         title="Movie Theaters"
