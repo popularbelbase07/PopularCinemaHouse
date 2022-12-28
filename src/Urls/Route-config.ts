@@ -17,6 +17,7 @@ import FilterMovies from "../movies/FilterMovies";
 import LandingMoviesPage from "../movies/LandingMoviesPage";
 
 import RedirectToLandingPage from "../Utils/RedirectToLandingPage";
+import MovieDetails from "../movies/MovieDetails";
 
 
 
@@ -38,7 +39,9 @@ const routes = [
     {path: '/movies/create', component: CreateMovie},
     {path: '/movies/edit/:id(\\d+)', component: EditMovie},
     {path: '/movies/filter', component: FilterMovies},
+    {path: '/movies/:id(\\d+)', component: MovieDetails},
    
+    
 
     {path: '/', component: LandingMoviesPage, exact:true},
     // create page not found

@@ -7,6 +7,23 @@ export default function LandingMoviesPage(){
     const [movies, setMovies] = useState<LandingPageDTO>({});
 
     useEffect(() => {
+
+
+    }, []);
+    
+    return(
+        <>
+         <h3>In Theaters</h3>
+            <MovieList movies={movies.inTheaters} />
+
+            <h3>Upcomming Releases</h3>
+            <MovieList movies={movies.upcommingReleases} />
+        </>
+    )
+}
+
+/*
+
       const timerId = setTimeout(() => {
         setMovies({
           inTheaters: [
@@ -52,15 +69,5 @@ export default function LandingMoviesPage(){
         });
       }, 2000);
       return () => clearTimeout(timerId);
-    });
     
-    return(
-        <>
-         <h3>In Theaters</h3>
-            <MovieList movies={movies.inTheaters} />
-
-            <h3>Upcomming Releases</h3>
-            <MovieList movies={movies.upcommingReleases} />
-        </>
-    )
-}
+*/
