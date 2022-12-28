@@ -59,7 +59,8 @@ import { movieCreationDTO, moviePostGetDTO } from "./Movies.Model";
          {loading ? <Loading/> : 
              <MovieForm
              model={{title: '', inTheaters: false, trailer: ''}}
-             onSubmit = {async values => await create(values)}
+             onSubmit = {values =>  create(values)}  
+             //onSubmit = { values => console.log(values)}            
              nonSelectedGenres= {nonSelectedGenres}
              selectedGenres= {[]}
              nonSelectedMovieTheater = {nonSelectedMovieTheater}
@@ -73,32 +74,3 @@ import { movieCreationDTO, moviePostGetDTO } from "./Movies.Model";
      )
 }
 
-
-
-/*
-
-export default function CreateMovie(){
-// In the case of create a movie.The should not have any selectedGenres by default
-const nonSelectedGenres: genreDTO[] = [{id:1, name: 'Comedy'}, {id:2, name: 'Drama'} ]
-
-// Same things for movie theaters that helps the movie can be showing in several cinema houses.
-const nonSelectedMovieTheater: movieTheatersDTO[] = [{id:1, name: 'Supa Deurali'}, {id:2, name: 'Jay Santoshi Ma'} ]
-
-    return(
-        <>
-        <h3>Create Movie</h3>
-        <MovieForm
-        model = {{title: '', inTheaters:false, trailer: ''}}
-        onSubmit={values => console.log(values)}
-        nonSelectedGenres = {nonSelectedGenres}
-        selectedGenres = {[]}
-
-        nonSelectedMovieTheater = {nonSelectedMovieTheater}
-        selectedMovieTheaters = {[]}
-        selectedActors= {[]}
-        />
-       
-        </>
-    )
-}
-*/

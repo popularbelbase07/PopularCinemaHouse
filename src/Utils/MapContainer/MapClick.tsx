@@ -11,5 +11,5 @@ useMapEvent('click', eventArgs => {
 }
 
 interface mapClickProps{
-    setCoordinates( setCoordinates: coordinateDTO) : void
+    setCoordinates( coordinates: coordinateDTO) : void
 }

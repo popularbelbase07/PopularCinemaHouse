@@ -29,6 +29,7 @@ export default function CreateMovieTheater() {
       <MovieTheaterForm
         model={{name: ''}}
         onSubmit = {async values => await create(values)}
+        
       />
     </>
   );

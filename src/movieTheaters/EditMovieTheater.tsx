@@ -13,6 +13,8 @@ export default function EditMovieTheater() {
     model={entity}
     onSubmit= {async values => 
       await edit(values)}
+   
+     //onSubmit = {values => console.log(values)}
     />    
 }
    </EditEntity>

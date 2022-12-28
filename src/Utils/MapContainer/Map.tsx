@@ -26,7 +26,7 @@ export default function Map(props: mapProps) {
         style={{ height: props.height }}
       >
         <TileLayer
-          attribution="Movie Catalog"
+          attribution="Oracle Cinema House"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <MapClick
