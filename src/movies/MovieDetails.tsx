@@ -19,17 +19,19 @@ export default function MovieDetails() {
         //Format our release date field
         response.data.releaseDate = new Date(response.data.releaseDate);
         setMovie(response.data);
-        console.log(response.data);
+        //console.log(response.data);
       });
   }, [id]);
 
   /* Transfer url of Trailer into embadded videos of youtube*/
   function generateEmbeddedVideoURL(trailer: string): string {
+    
     if (!trailer) {
-      return "";
+      return '';
     }
-    let videoId = trailer.split("v=")[1];
-    const ampersandPosition = videoId.indexOf("&");
+    let videoId = trailer.split('v=')[1];   
+   const ampersandPosition = videoId.indexOf('&');
+  
     if (ampersandPosition !== -1) {
       videoId = videoId.substring(0, ampersandPosition);
     }
@@ -89,7 +91,7 @@ export default function MovieDetails() {
               height="350"
               src={generateEmbeddedVideoURL(movie.trailer)}
               frameBorder={0}
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              data-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
           </div>

@@ -61,6 +61,8 @@ npm install yup = Validation
 
 * npm i -D @types/react-bootstrap-typeahead@5.1.4 ( for typescript)
 
+*  npm i react-iframe
+
 
 8.  Starting to communicate a backend service need to install Axios
 
