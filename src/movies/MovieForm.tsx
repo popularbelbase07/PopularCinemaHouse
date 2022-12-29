@@ -49,8 +49,8 @@ export default function MovieForm(props: movieFormProps) {
     <Formik
       initialValues={props.model}
       onSubmit={(values, actions) => {
-        values.genresIds = selectedGenres.map((item) => item.key);
-        values.movieTheatersIds = selectedMovieTheaters.map(item => item.key);
+        values.genresIds = selectedGenres?.map((item) => item.key);
+        values.movieTheatersIds = selectedMovieTheaters?.map(item => item.key);
         //Add the actors that are selected while doing dropdown
         values.actors = selectedActor;
         props.onSubmit(values, actions);

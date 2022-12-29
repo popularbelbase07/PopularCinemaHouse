@@ -1,29 +1,36 @@
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { urlMovies } from "../endpoints";
+import AlertContext from "../Utils/AlertContext";
 import MovieList from "./MovieList";
 import { LandingPageDTO } from "./Movies.Model";
 
-export default function LandingMoviesPage(){
+export default function LandingMoviesPage() {
+  const [movies, setMovies] = useState<LandingPageDTO>({});
 
-    const [movies, setMovies] = useState<LandingPageDTO>({});
-
-    useEffect(() => {
-axios.get(urlMovies)
-.then((response: AxiosResponse<LandingPageDTO>) => {
-  setMovies(response.data);
-})
+  useEffect(() => {
+    loadData();
   }, []);
-    
-    return(
-        <>
-         <h3>In Theaters</h3>
-            <MovieList movies={movies.inTheaters} />
 
-            <h3>Upcomming Releases</h3>
-            <MovieList movies={movies.upcommingReleases} />
-        </>
-    )
+  function loadData() {
+    axios.get(urlMovies).then((response: AxiosResponse<LandingPageDTO>) => {
+      setMovies(response.data);
+    });
+  }
+
+  return (
+    <AlertContext.Provider
+      value={() => {
+        loadData();
+      }}
+    >
+      <h3>In Theaters</h3>
+      <MovieList movies={movies.inTheaters} />
+
+      <h3>Upcomming Releases</h3>
+      <MovieList movies={movies.upcommingReleases} />
+    </AlertContext.Provider>
+  );
 }
 
 /*
