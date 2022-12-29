@@ -63,7 +63,7 @@ import { movieCreationDTO, moviePostGetDTO } from "./Movies.Model";
              //onSubmit = { values => console.log(values)}            
              nonSelectedGenres= {nonSelectedGenres}
              selectedGenres= {[]}
-             nonSelectedMovieTheater = {nonSelectedMovieTheater}
+             nonSelectedMovieTheaters = {nonSelectedMovieTheater}
              selectedMovieTheaters= {[]}
              selectedActors ={[]}
              

@@ -1,4 +1,4 @@
-import { movieTheaterDTO } from './../movieTheaters/MovieTheater.model.d';
+import { movieTheaterDTO, movieTheatersDTO } from './../movieTheaters/MovieTheater.model.d';
 import { genreDTO } from './../genres/Genres.model.d';
 import { actorsMovieDTO } from './../actors/Actors.model.d';
 // .d is a type defination file
@@ -42,4 +42,13 @@ export interface LandingPageDTO{
 export interface moviePostGetDTO{
     genres: genreDTO[];
     movieTheaters: movieTheaterDTO[];
+}
+
+export interface moviePutGetDTO {
+    movie: movieDTO;
+    selectedGenres : genreDTO[];
+    nonSelectedGenres : genreDTO[];
+    selectedMovieTheaters : movieTheatersDTO[];
+    nonSelectedMovieTheaters: movieTheatersDTO[];
+    actors: actorsMovieDTO[];
 }

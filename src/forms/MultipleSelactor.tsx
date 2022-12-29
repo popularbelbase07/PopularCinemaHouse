@@ -40,17 +40,17 @@ return(
 
     <div className="multiple-selector">
             <ul>
-                {props.nonSelected?.map(item => 
+                {props.nonSelected && props.nonSelected.map(item => 
                    <li key={item.key} onClick = {() => {select(item)}}>{item.value}</li> 
                     )}
             </ul>
             <div className="multiple-selector-buttons">
-                <button type="button" onClick={selectAll}>{'>>'}</button>
-                <button type="button" onClick={deSelectedAll}>{'<<'}</button>
+                <button style ={{ color: 'green'}} type="button" onClick={selectAll}>{'Select All>>>'}</button>
+                <button style ={{ color: 'red'}} type="button" onClick={deSelectedAll}>{'<<<Deselect All'}</button>
 
             </div>
             <ul>
-                {props.selected?.map(item => 
+                {props.selected && props.selected.map(item => 
                    <li key={item.key} onClick = {() => {deSelect(item)}}>{item.value}</li> 
                     )}
             </ul>
@@ -68,7 +68,8 @@ displayName: string;
     selected: multipleSelectorModel[];
     nonSelected: multipleSelectorModel[];
     onChange(selected: multipleSelectorModel[],
-        nonSelected: multipleSelectorModel[]): void;
+        nonSelected: multipleSelectorModel[]
+        ): void;
 
 }
 export interface multipleSelectorModel{

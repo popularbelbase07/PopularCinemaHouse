@@ -3,12 +3,12 @@
 }
 
 .form-markdown textarea{
-  width: 250px;
+  width: 500px;
   height: 250px;
   margin-right: 40px;
 }
 .form-markdown  .markdown-container {
     border: 2px dashed green;
-    width: 250px;
+    width: 500px;
     height: 250px;
 }

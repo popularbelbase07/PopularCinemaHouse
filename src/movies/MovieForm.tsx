@@ -30,17 +30,17 @@ export default function MovieForm(props: movieFormProps) {
   const [selectedMovieTheaters, setSelectedMovieTheaters] = useState(
     mapToModel(props.selectedMovieTheaters)
   );
-  const [nonSelectedMovieTheater, setNonSelectedMovieTheaters] = useState(
-    mapToModel(props.nonSelectedMovieTheater)
+  const [nonSelectedMovieTheaters, setNonSelectedMovieTheaters] = useState(
+    mapToModel(props.nonSelectedMovieTheaters)
   );
 
   // create The react hook for working with displaying actors
   const [selectedActor, setSelectedActor] = useState(props.selectedActors);
 
   function mapToModel(
-    items: { id: number; name: string }[]
+    itemsMap: { id: number; name: string }[]
   ): multipleSelectorModel[] {
-    return items?.map(item => {
+    return itemsMap && itemsMap.map(item => {
       return { key: item.id, value: item.name };
     });
   }
@@ -49,8 +49,8 @@ export default function MovieForm(props: movieFormProps) {
     <Formik
       initialValues={props.model}
       onSubmit={(values, actions) => {
-        values.genresIds = selectedGenres?.map((item) => item.key);
-        values.movieTheatersIds = selectedMovieTheaters?.map(item => item.key);
+        values.genresIds = selectedGenres.map((item) => item.key);
+        values.movieTheatersIds = selectedMovieTheaters.map(item => item.key);
         //Add the actors that are selected while doing dropdown
         values.actors = selectedActor;
         props.onSubmit(values, actions);
@@ -87,15 +87,18 @@ export default function MovieForm(props: movieFormProps) {
             }}
           />
 
-          <MultipleSelector
+<MultipleSelector
             displayName="Movie Theaters"
-            nonSelected={nonSelectedMovieTheater}
+            nonSelected={nonSelectedMovieTheaters}
             selected={selectedMovieTheaters}
             onChange={(selected, nonSelected) => {
               setSelectedMovieTheaters(selected);
               setNonSelectedMovieTheaters(nonSelected);
             }}
           />
+
+          
+          
           <TypeAheadActors
             displayName="Filter by Actors or Actress Name"
             actors={selectedActor}
@@ -150,6 +153,6 @@ interface movieFormProps {
   selectedGenres: genreDTO[];
   nonSelectedGenres: genreDTO[];
   selectedMovieTheaters: movieTheatersDTO[];
-  nonSelectedMovieTheater: movieTheatersDTO[];
+  nonSelectedMovieTheaters: movieTheatersDTO[];
   selectedActors: actorsMovieDTO[];
 }
