@@ -32,7 +32,7 @@ CustomAlert();
                 <div>
                 <Link style={{marginRight: '1rem'}} className="btn btn-info btn-rounded btn-floating btn-sm"
                     to ={`/movies/edit/${props.id}`}>
-                         Edit Movie
+                         Edit
                          </Link>
                    <Button
                     onClick={() => CustomConfirm(() => deleteMovie())}
