@@ -16,4 +16,5 @@ export default function DisplayError(props: displayErrorsProps) {
 
 interface displayErrorsProps {
   errors?: string[];
+  
 }

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Authorization from "../auth/Authorization";
 import logo from "./Oracle Cinema.gif";
 
@@ -9,7 +9,8 @@ export default function Menu() {
         <NavLink className="navbar-brand text-danger" to="/">
           <img style={{ height: "50px", width: "150px" }} src={logo} alt="Oracle Cinema" />{" "}
         </NavLink>
-        <div className="collapse navbar-collapse ">
+        <div className="collapse navbar-collapse "
+        style={{display: 'flex', justifyContent:'space-between'}}>
           <ul className="navbar-nav me-auto mb-2 mb-lg-4">
             <li className="nav-item">
               <NavLink className="nav-link text-success" to={"/movies/filter"}>
@@ -50,6 +51,17 @@ export default function Menu() {
               }
             />
           </ul>
+
+          <div className="d-flex">
+                <Authorization
+                authorized={<></>}
+                notAuthorized={<>
+                <Link to ="/register" className="nav-link btn btn-link"> Register</Link>
+                <Link to ="/login" className="nav-link btn btn-link"> Login</Link>
+                </>}
+                />
+
+            </div>
         </div>
       </div>
     </nav>

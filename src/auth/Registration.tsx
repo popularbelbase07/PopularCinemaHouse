@@ -6,23 +6,21 @@ import { authenticationResponse, userCredentials } from "./auth.models";
 import AuthForm from "./AuthForm";
 
 export default function Registration() {
-const [errors, setErrors] = useState<string[]>([]);
+  const [errors, setErrors] = useState<string[]>([]);
 
   async function register(credentials: userCredentials) {
     try {
-        setErrors([]);
+      setErrors([]);
       const response = await axios.post<authenticationResponse>(
-        `${urlAccount}/create`, credentials);
+        `${urlAccount}/create`,
+        credentials
+      );
       console.log(response.data);
     } catch (error) {
-        setErrors(errors);
-        console.error(error);
-      }
-     
-        
-           
-        }
-     
+      setErrors(errors);
+      console.error(error);
+    }
+  }
 
   return (
     <>

@@ -13,8 +13,8 @@ function App() {
  // For authorization Purpose
  const [claims, setClaims] = useState<claim[]>([
 // Hard coded claims for authentication
-{name: 'email' , value:'popularbelbase10@gmail.com'  },
-{name: 'role' , value: 'admin'}
+//{name: 'email' , value:'popularbelbase10@gmail.com'  },
+//{name: 'role' , value: 'admin'}
  ]);
 
  // create a function that helps you to protect the route by the user roles

@@ -19,6 +19,7 @@ import LandingMoviesPage from "../movies/LandingMoviesPage";
 import RedirectToLandingPage from "../Utils/RedirectToLandingPage";
 import MovieDetails from "../movies/MovieDetails";
 import Registration from "../auth/Registration";
+import Login from "../auth/Login";
 
 
 
@@ -44,6 +45,7 @@ const routes = [
 
 
     {path: '/register', component: Registration},
+    {path: '/login', component: Login},
     
 
     {path: '/', component: LandingMoviesPage, exact:true},
