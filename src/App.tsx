@@ -14,7 +14,7 @@ function App() {
  const [claims, setClaims] = useState<claim[]>([
 // Hard coded claims for authentication
 {name: 'email' , value:'popularbelbase10@gmail.com'  },
-{name: 'role' , value: 'admin'}
+// {name: 'role' , value: 'admin'}
  ]);
 
   return (
