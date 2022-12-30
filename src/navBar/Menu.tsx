@@ -13,7 +13,7 @@ export default function Menu() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-4">
             <li className="nav-item">
               <NavLink className="nav-link text-success" to={"/movies/filter"}>
-                <b>Filter Movies</b>
+                Filter Movies
               </NavLink>
             </li>
             <Authorization
