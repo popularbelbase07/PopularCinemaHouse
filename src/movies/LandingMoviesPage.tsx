@@ -15,7 +15,7 @@ export default function LandingMoviesPage() {
   function loadData() {
     axios.get(urlMovies).then((response: AxiosResponse<LandingPageDTO>) => {
       setMovies(response.data);
-    });
+    } ,);
   }
 
   return (
@@ -24,6 +24,7 @@ export default function LandingMoviesPage() {
         loadData();
       }}
     >
+      
       <h3>In Theaters</h3>
       <MovieList movies={movies.inTheaters} />
 
