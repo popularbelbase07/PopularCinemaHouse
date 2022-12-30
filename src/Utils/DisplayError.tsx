@@ -4,13 +4,12 @@ export default function DisplayError(props: displayErrorsProps) {
 
   return (
     <>
-      {props.errors ? (
-        <ul style={style}>
-          {props.errors.map((error, index) => (
+      {props.errors ? <ul style={style}>
+          {props.errors?.map((error, index) =>
             <li key={index}>{error}</li>
-          ))}
+          )}
         </ul>
-      ) : null}
+       : null}
     </>
   );
 }

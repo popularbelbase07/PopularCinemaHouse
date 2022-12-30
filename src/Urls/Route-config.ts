@@ -18,6 +18,7 @@ import LandingMoviesPage from "../movies/LandingMoviesPage";
 
 import RedirectToLandingPage from "../Utils/RedirectToLandingPage";
 import MovieDetails from "../movies/MovieDetails";
+import Registration from "../auth/Registration";
 
 
 
@@ -40,7 +41,9 @@ const routes = [
     {path: '/movies/edit/:id(\\d+)', component: EditMovie, isAdmin: true},
     {path: '/movies/filter', component: FilterMovies},
     {path: '/movies/:id(\\d+)', component: MovieDetails},
-   
+
+
+    {path: '/register', component: Registration},
     
 
     {path: '/', component: LandingMoviesPage, exact:true},
