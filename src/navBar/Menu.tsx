@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
+import logo from "./Oracle Cinema.gif"
 
 export default function Menu(){
     return(
             <nav className="navbar navbar-expand-lg navbar-light bg-dark">
                 <div className="container-fluid">                
-                    <NavLink className="navbar-brand text-danger" to="/"> <h1> <strong>PCH</strong></h1> </NavLink >
+                    <NavLink className="navbar-brand text-danger" to="/"> <img  style = {{height: '50px', width:'150px'}}src={logo} /> </NavLink >
                         <div className="collapse navbar-collapse ">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-4">
                                 <li className="nav-item" >

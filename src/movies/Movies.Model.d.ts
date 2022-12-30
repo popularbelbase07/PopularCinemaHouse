@@ -8,7 +8,6 @@ export interface movieDTO{
     id: number;
     title: string;
     poster: string;
-    title: string;
     inTheaters: boolean;
     trailer: string;
     releaseDate: Date;
