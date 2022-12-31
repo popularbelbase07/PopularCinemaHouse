@@ -1,12 +1,17 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { urlAccount } from "../endpoints";
 import DisplayError from "../Utils/DisplayError";
 import { authenticationResponse, userCredentials } from "./auth.models";
+import AuthenticationContext from "./AuthenticationContext";
 import AuthForm from "./AuthForm";
+import { getClaims, saveToken } from "./handleJWT";
 
 export default function Registration() {
   const [errors, setErrors] = useState<string[]>([]);
+  const {update} = useContext(AuthenticationContext);
+  const history = useHistory();
 
   async function register(credentials: userCredentials) {
     try {
@@ -15,7 +20,10 @@ export default function Registration() {
         `${urlAccount}/create`,
         credentials
       );
-      console.log(response.data);
+      // Passing JWT Token
+      saveToken(response.data);
+      update(getClaims());
+      history.push('/')
     } catch (error) {
       setErrors(errors);
       console.error(error);

@@ -27,7 +27,7 @@ export default function AuthForm(props: authFormProps) {
           />
 
           <Button disabled={formikProps.isSubmitting} type="submit">
-            SignUp
+            Send
           </Button>
           <Link className="btn btn-secondary btn-rounded btn-floating btn-sm " to={"/"}>
             Cancel

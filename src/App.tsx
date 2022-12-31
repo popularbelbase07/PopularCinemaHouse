@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { claim } from "./auth/auth.models";
 import AuthenticationContext from "./auth/AuthenticationContext";
+import { getClaims } from "./auth/handleJWT";
 import Footer from "./Footer/Footer";
 import Menu from "./navBar/Menu";
 import routes from "./Urls/Route-config";
@@ -11,11 +12,10 @@ configureValidations();
 
 function App() {
  // For authorization Purpose
- const [claims, setClaims] = useState<claim[]>([
-// Hard coded claims for authentication
-//{name: 'email' , value:'popularbelbase10@gmail.com'  },
-//{name: 'role' , value: 'admin'}
- ]);
+ const [claims, setClaims] = useState<claim[]>([]);
+useEffect(() => {
+  setClaims(getClaims())
+}, [])
 
  // create a function that helps you to protect the route by the user roles
  function isAdmin(){
@@ -49,3 +49,12 @@ function App() {
 }
 
 export default App;
+
+
+/*
+const [claims, setClaims] = useState<claim[]>([
+// Hard coded claims for authentication
+//{name: 'email' , value:'popularbelbase10@gmail.com'  },
+//{name: 'role' , value: 'admin'}
+ ]);
+*/
