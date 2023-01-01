@@ -2,11 +2,13 @@ import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Link, useParams } from "react-router-dom";
-import { urlMovies } from "../endpoints";
+import { urlMovies, urlRatings } from "../endpoints";
 import Loading from "../Utils/Loading";
 import coordinateDTO from "../Utils/MapContainer/coordinates.model";
 import Map from "../Utils/MapContainer/Map";
+import Ratings from "../ratings/Rating";
 import { movieDTO } from "./Movies.Model";
+import Swal from "sweetalert2";
 
 export default function MovieDetails() {
   const { id }: any = useParams();
@@ -36,6 +38,15 @@ export default function MovieDetails() {
       videoId = videoId.substring(0, ampersandPosition);
     }
     return `https://www.youtube.com/embed/${videoId}`;
+  }
+
+  // Rating the movies
+  function handleRateFunction(rate: number){
+axios.post(urlRatings, {rating: rate, movieId: id})
+.then(() => {
+  Swal.fire({icon: 'success', title: 'The given rating is recieved'});
+})
+
   }
   /* Transfermation of coordinates in Map*/
   function transformCoordinates(): coordinateDTO[] {
@@ -71,7 +82,10 @@ export default function MovieDetails() {
           {genre.name}
         </Link>
       ))}
-      | {movie.releaseDate.toDateString()}
+      | {movie.releaseDate.toDateString()} | Your Rate : <Ratings 
+      maxmiunValue={5} 
+      selectedValue={movie.userVote}
+    OnChange = {handleRateFunction}/> | Overall Rating : {movie.avarageVote}
       {/* Display poster*/}
       <div style={{ display: "flex", marginTop: "1rem" }}>
         <span style={{ display: "inline-block", marginRight: "1rem" }}>

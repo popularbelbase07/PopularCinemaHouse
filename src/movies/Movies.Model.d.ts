@@ -15,6 +15,9 @@ export interface movieDTO{
     genres: genreDTO[];
     movieTheaters: movieTheaterDTO[];
     actors: actorsMovieDTO[];
+    //Ratings
+    userVote: number;
+    avarageVote: number;
 
 }
 

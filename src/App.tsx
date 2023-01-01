@@ -5,10 +5,12 @@ import AuthenticationContext from "./auth/AuthenticationContext";
 import { getClaims } from "./auth/handleJWT";
 import Footer from "./Footer/Footer";
 import Menu from "./navBar/Menu";
+import HttpConfigureInterceptor from "./ratings/HttpInterceptor";
 import routes from "./Urls/Route-config";
 import configureValidations from "./validationForm/Validation";
 // calling the custom validation function(UpperCase)
 configureValidations();
+HttpConfigureInterceptor()
 
 function App() {
  // For authorization Purpose

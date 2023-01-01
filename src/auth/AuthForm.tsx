@@ -16,10 +16,12 @@ export default function AuthForm(props: authFormProps) {
           .email("You must insert the valid email"),
         password: Yup.string().required("This field is required !!!!"),
       })}
+
+      
     >
       {(formikProps) => (
         <Form>
-          <TextField field={"email"} displayName={"Email"} />
+          <TextField field={"email"} displayName={"Email"}  />
           <TextField
             field={"password"}
             displayName={"Password"}

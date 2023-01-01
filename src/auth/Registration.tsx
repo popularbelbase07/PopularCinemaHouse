@@ -23,7 +23,7 @@ export default function Registration() {
       // Passing JWT Token
       saveToken(response.data);
       update(getClaims());
-      history.push('/')
+      history.push('/');
     } catch (error) {
       setErrors(errors);
       console.error(error);
@@ -34,8 +34,9 @@ export default function Registration() {
     <>
       <h3>Registration</h3>
       <DisplayError errors={errors} />
+     
       <AuthForm
-        model={{ email: "", password: "" }}
+        model={{ email: "", password: ""}}
         onSubmit={async (values) => await register(values)}
       />
     </>

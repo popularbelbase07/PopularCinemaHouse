@@ -34,3 +34,7 @@ export function logout() {
   localStorage.removeItem(tokenKey);
   localStorage.removeItem(expirationKey);
 }
+// Get JWT TOKEN
+export function getToken(){
+  return localStorage.getItem(tokenKey);
+}
