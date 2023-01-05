@@ -1,7 +1,7 @@
 import { authenticationResponse, claim } from "./auth.models.d";
 
-const tokenKey = "token";
-const expirationKey = "token-expiration";
+const tokenKey = 'token';
+const expirationKey = 'token-expiration';
 export function saveToken(authData: authenticationResponse) {
   // storing the data in local storage
   localStorage.setItem(tokenKey, authData.token);
@@ -22,10 +22,11 @@ export function getClaims(): claim[] {
     logout();
     return []; // The token has expire
   }
-  const dataToken = JSON.parse(atob(token.split(".")[1]));
+  // Middle part of the jwt token contains claim [1]
+  const dataToken = JSON.parse(atob(token.split('.')[1]));
   const response: claim[] = [];
   for (const property in dataToken) {
-    response.push({ name: property, value: dataToken[property] });
+    response.push({ name: property, value: dataToken[property]});
   }
   return response;
 }

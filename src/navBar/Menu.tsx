@@ -23,7 +23,7 @@ export default function Menu() {
             alt="Oracle Cinema"
           />{" "}
         </NavLink>
-        <div
+        <div 
           className="collapse navbar-collapse "
           style={{ display: "flex", justifyContent: "space-between" }}
         >
@@ -63,6 +63,15 @@ export default function Menu() {
                       Create a Movie
                     </NavLink>
                   </li>
+
+                  <li className="nav-item">
+                    <NavLink
+                      className="nav-link text-success"
+                      to={"/users"}
+                    >
+                     Users
+                    </NavLink>
+                  </li>
                 </>
               }
             />
@@ -86,12 +95,10 @@ export default function Menu() {
               }
               notAuthorized={
                 <>
-                  <Link to="/register" className="nav-link btn btn-link">
-                    {" "}
+                  <Link to="/register" className="nav-link btn btn-link">                   
                     Register
                   </Link>
-                  <Link to="/login" className="nav-link btn btn-link">
-                    {" "}
+                  <Link to="/login" className="nav-link btn btn-link">                    
                     Login
                   </Link>
                 </>

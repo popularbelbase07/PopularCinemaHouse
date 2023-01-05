@@ -25,7 +25,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-<> Popular Cinema House
+<> Oracle Cinema House
 1. Create a project 
 * npx create-react-app popularmovies --template typescript
 

@@ -17,6 +17,7 @@ interface TextFieldProps{
     field: string;
     displayName: string
     type: 'text' | 'password';
+    autocomplete?: string;
 }
 
 TextField.defaultProps = {

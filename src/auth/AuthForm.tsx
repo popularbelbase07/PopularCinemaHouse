@@ -14,10 +14,9 @@ export default function AuthForm(props: authFormProps) {
         email: Yup.string()
           .required("This field is Required !!")
           .email("You must insert the valid email"),
-        password: Yup.string().required("This field is required !!!!"),
-      })}
-
-      
+        password: Yup.string()
+          .required("This field is required !!!!"),
+      })}      
     >
       {(formikProps) => (
         <Form>
@@ -26,10 +25,11 @@ export default function AuthForm(props: authFormProps) {
             field={"password"}
             displayName={"Password"}
             type={"password"}
+            autocomplete={"current-password"}
           />
 
           <Button disabled={formikProps.isSubmitting} type="submit">
-            Send
+            {props.children}
           </Button>
           <Link className="btn btn-secondary btn-rounded btn-floating btn-sm " to={"/"}>
             Cancel
@@ -41,6 +41,7 @@ export default function AuthForm(props: authFormProps) {
 }
 
 interface authFormProps {
+  children?: React.ReactNode;
   model: userCredentials;
   onSubmit(
     values: userCredentials,

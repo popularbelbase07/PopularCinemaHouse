@@ -85,7 +85,8 @@ axios.post(urlRatings, {rating: rate, movieId: id})
       | {movie.releaseDate.toDateString()} | Your Rate : <Ratings 
       maxmiunValue={5} 
       selectedValue={movie.userVote}
-    OnChange = {handleRateFunction}/> | Overall Rating : {movie.avarageVote}
+      OnChange={handleRateFunction}
+        /> | Overall Rate: {movie.avarageVote}
       {/* Display poster*/}
       <div style={{ display: "flex", marginTop: "1rem" }}>
         <span style={{ display: "inline-block", marginRight: "1rem" }}>

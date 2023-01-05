@@ -8,8 +8,8 @@ export default function Authorization(props: authorizationProps) {
   useEffect(() => {
     if (props.role) {
       const index = claims.findIndex(
-        (claim) => claim.name === "role" && claim.value === props.role
-      );
+        (claim) => 
+        claim.name === 'role' && claim.value === props.role );
       //user does not have any claims
       setIsAuthorized(index > -1);
     } else {

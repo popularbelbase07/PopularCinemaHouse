@@ -20,6 +20,7 @@ import RedirectToLandingPage from "../Utils/RedirectToLandingPage";
 import MovieDetails from "../movies/MovieDetails";
 import Registration from "../auth/Registration";
 import Login from "../auth/Login";
+import IndexUsers from "../auth/IndexUsers";
 
 
 
@@ -46,6 +47,7 @@ const routes = [
 
     {path: '/register', component: Registration},
     {path: '/login', component: Login},
+    {path: '/users', component: IndexUsers, isAdmin: true},
     
 
     {path: '/', component: LandingMoviesPage, exact:true},

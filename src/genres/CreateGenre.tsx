@@ -18,20 +18,11 @@ export default function CreateGenre() {
       history.push("/genres");
     } 
     catch(error){
-      //console.error(error);
-
-      /*      
-       if(error && error.response){
-          setErrors(error.responsedata)
-        }
-      */
-        if(errors){
-          setErrors(errors)
-        }
-
-       
+      if(error){
+        setErrors(errors)
+      }      
+      }
     }
-  }
 
   return (
     <>

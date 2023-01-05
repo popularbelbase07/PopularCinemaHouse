@@ -5,40 +5,42 @@ import AuthenticationContext from "./auth/AuthenticationContext";
 import { getClaims } from "./auth/handleJWT";
 import Footer from "./Footer/Footer";
 import Menu from "./navBar/Menu";
-import HttpConfigureInterceptor from "./ratings/HttpInterceptor";
+
 import routes from "./Urls/Route-config";
+import configureInterceptor from "./Utils/httpInterceptors";
 import configureValidations from "./validationForm/Validation";
 // calling the custom validation function(UpperCase)
 configureValidations();
-HttpConfigureInterceptor()
+configureInterceptor();
 
 function App() {
  // For authorization Purpose
  const [claims, setClaims] = useState<claim[]>([]);
+ 
 useEffect(() => {
   setClaims(getClaims())
-}, [])
+}, []);
+
 
  // create a function that helps you to protect the route by the user roles
  function isAdmin(){
-  return claims.findIndex(claim => claim.name === 'role' && claim.value==='admin') > -1;
+  return claims.findIndex(claim => claim.name === 'role' && claim.value ==='admin') > -1;
  }
 
   return (
     <BrowserRouter>
-      <AuthenticationContext.Provider value={{ claims, update: setClaims }}>
+      <AuthenticationContext.Provider value={{claims, update: setClaims}} >
         <Menu />
         <div className="container">
           <Switch>
             {routes.map((route) => (
               <Route key={route.path} path={route.path} exact={route.exact}>
                 {route.isAdmin && !isAdmin()  ? 
-                <>
+                  <>
                 <b>You have no permission to see the page</b>
-                </> : <route.component />
-                
+                </> : <route.component />       
                 }
-                
+                               
               </Route>
             ))}
           </Switch>

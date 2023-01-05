@@ -1,7 +1,8 @@
 import axios from "axios";
 import { getToken } from "../auth/handleJWT";
 
-export default function HttpConfigureInterceptor(){
+//Http request we do from axios
+export default function configureInterceptor(){
     axios.interceptors.request.use(
         function(config){
             const token = getToken();

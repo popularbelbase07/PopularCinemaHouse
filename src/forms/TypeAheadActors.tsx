@@ -56,7 +56,6 @@ function handleDragStart(actor: actorsMovieDTO){
         <AsyncTypeahead
         id="typeahead"
         onChange = {actors => {
-            //console.log(actors)
             // if the actor is already present then not going to add any actor 
             if(props.actors.findIndex(x => x.id === actors[0].id) === -1){
                 actors[0].character = '';

@@ -14,17 +14,15 @@ export default function LandingMoviesPage() {
 
   function loadData() {
     axios.get(urlMovies).then((response: AxiosResponse<LandingPageDTO>) => {
-      setMovies(response.data);
-    } ,);
+      setMovies(response.data);    
+    });
   }
 
   return (
-    <AlertContext.Provider
-      value={() => {
-        loadData();
-      }}
-    >
-      
+    <AlertContext.Provider value={() => {
+      loadData();
+    }}
+    >      
       <h3>In Theaters</h3>
       <MovieList movies={movies.inTheaters} />
 
