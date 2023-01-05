@@ -67,8 +67,9 @@ axios.post(urlRatings, {rating: rate, movieId: id})
     <div>
       {/* Display Title or Name of the movie and Released date*/}
       <div style={{color:'#000080'}}
-      className="progress-bar progress-bar-striped progress-bar-animated">
-      <h1>{movie.title}</h1>
+      className="progress-bar-striped progress-bar-animated">
+      <h1>{movie.title} ({movie.releaseDate.getFullYear()})</h1>
+      
       </div>
       <hr></hr>
       {/* Display Genres*/}

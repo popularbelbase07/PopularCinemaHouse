@@ -13,7 +13,7 @@ export default function IndexUsers() {
     });
     Swal.fire({
       title: "Success",
-      text: "Done Awesomly",
+      text: "Great Job !!!",
       icon: "success",
     });
   }
