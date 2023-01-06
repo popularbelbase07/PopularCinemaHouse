@@ -26,8 +26,8 @@ export default function EditActor(){
         {(entity, edit) => 
         <ActorForm
         model={entity}
-        onSubmit={async values => 
-            await edit(values)}
+        onSubmit={values => 
+            edit(values)}
         />}
 
 
