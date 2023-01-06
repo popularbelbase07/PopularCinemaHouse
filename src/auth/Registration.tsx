@@ -69,8 +69,9 @@ export default function Registration() {
                 <DisplayError errors={errors} />
                 <AuthForm
                   model={{ email: "", password: "" }}
-                  onSubmit={async (values) => await register(values)}
                   children= {"Signup"}
+                  onSubmit={async (values) => await register(values)}
+                 
                 />
               </>
               <div className="d-flex flex-row justify-content-start">
