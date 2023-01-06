@@ -24,10 +24,10 @@ export default function Login() {
       setErrors([]);
       const response = await axios.post<authenticationResponse>(
         `${urlAccounts}/login`, credentials);
-        console.log(credentials);
+        
       //Passing Jwt Token     
       saveToken(response.data);
-      console.log(response.data);
+      //console.log(response.data);
       update(getClaims());
       history.push('/');
     } catch (error) {
