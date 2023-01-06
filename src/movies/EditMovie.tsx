@@ -1,6 +1,4 @@
 import axios, { AxiosResponse } from "axios";
-import { create } from "domain";
-import { FormikHelpers } from "formik";
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { urlMovies } from "../endpoints";
@@ -73,25 +71,3 @@ export default function EditMovie() {
     </>
   );
 }
-
-/*
-    // In the case of Edit a movie.The should have any selectedGenres bydefault
-    // In the case of create a movie.The should not have any selectedGenres bydefault
-const nonSelectedGenres: genreDTO[] = [ {id:2, name: 'Drama'} ]
-const selectedGenres: genreDTO[] = [{id:1, name: 'Comedy'}]
-
-// Same things for movie theaters that helps the moviecan be showing in several cinema houses.
-const nonSelectedMovieTheater: movieTheatersDTO[] = [{id:1, name: 'Supa Deurali'} ]
-const selectedMovieTheater: movieTheatersDTO[] = [{id:2, name: 'Jay Santoshi Ma'} ]
-// sample or hard coded actor data
-const selectedActors: actorsMovieDTO[] = [
-    {    id: 1, name: "Jonny Dopp", character: "Gerelt", picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRYvUfImOGggY0xxqRN4-_F7_zrrwrLpd5mg&usqp=CAU" }
-]
-
-<MovieForm
-        model = {{title: 'Gladiator', inTheaters:true, trailer: 'url',
-        releaseDate: new Date('1998-01-01T00:00:00')
-
-        />
-
-*/
