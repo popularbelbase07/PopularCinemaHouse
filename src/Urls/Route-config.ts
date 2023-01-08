@@ -49,9 +49,6 @@ const routes = [
     {path: '/login', component: Login},
     {path: '/users', component: IndexUsers, isAdmin: true},
 
-    {path: '/reservation', component: IndexUsers},
-    
-
     {path: '/', component: LandingMoviesPage, exact:true},
     // create page not found
     {path: '*', component: RedirectToLandingPage}
