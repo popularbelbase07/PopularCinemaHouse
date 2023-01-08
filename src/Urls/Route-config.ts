@@ -48,6 +48,8 @@ const routes = [
     {path: '/register', component: Registration},
     {path: '/login', component: Login},
     {path: '/users', component: IndexUsers, isAdmin: true},
+
+    {path: '/reservation', component: IndexUsers},
     
 
     {path: '/', component: LandingMoviesPage, exact:true},

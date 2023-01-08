@@ -33,6 +33,12 @@ export default function Menu() {
                 Filter Movies
               </NavLink>
             </li>
+
+            <li className="nav-item">
+              <NavLink className="nav-link text-success" to={"/reservation"}>
+               Reservation
+              </NavLink>
+            </li>
             <Authorization
               role="admin"
               authorized={
