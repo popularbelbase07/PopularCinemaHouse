@@ -21,6 +21,7 @@ import MovieDetails from "../movies/MovieDetails";
 import Registration from "../auth/Registration";
 import Login from "../auth/Login";
 import IndexUsers from "../auth/IndexUsers";
+import Booking from "../booking/Booking";
 
 
 
@@ -49,7 +50,7 @@ const routes = [
     {path: '/login', component: Login},
     {path: '/users', component: IndexUsers, isAdmin: true},
 
-    {path: '/reservation', component: IndexUsers},
+    {path: '/booking', component: Booking},
     
 
     {path: '/', component: LandingMoviesPage, exact:true},

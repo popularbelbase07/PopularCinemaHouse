@@ -35,8 +35,8 @@ export default function Menu() {
             </li>
 
             <li className="nav-item">
-              <NavLink className="nav-link text-success" to={"/reservation"}>
-               Reservation
+              <NavLink className="nav-link text-success" to={"/booking"}>
+               Booking
               </NavLink>
             </li>
             <Authorization
