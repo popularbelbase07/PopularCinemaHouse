@@ -62,7 +62,8 @@ export default function Registration() {
                 className="fw-normal my-4 pb-3"
                 style={{ letterSpacing: "1px" }}
               >
-                Please Register yourself first
+                <b>Did you already Register?</b><br/>
+               <i>Please Register yourself first</i> 
               </h5>
 
               <>
