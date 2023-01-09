@@ -5,7 +5,7 @@ import {
   MDBCardImage, MDBCol, MDBContainer, MDBIcon, MDBRow
 } from "mdb-react-ui-kit";
 import { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { urlAccounts } from "../endpoints";
 import logo from "../navBar/Oracle Cinema.gif";
 import DisplayError from "../Utils/DisplayError";
@@ -70,25 +70,25 @@ export default function Login() {
                 <AuthForm
                   model={{ email: '', password: ''}}
                   onSubmit={async (values) => await login(values)}
-                  children= {"Login"}                />
+                  children= {"Login"}  />
               </>
-              <a className="small text-muted" href="#!">
+              <Link className="small text-muted" to="#!" >
                 Forgot password?
-              </a>
+              </Link>
               <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
                 Don't have an account?{" "}
-                <a href="#!" style={{ color: "#393f81" }}>
+                <Link to={'/register'} style={{ color: "#393f81" }}>
                   Register here
-                </a>
+                </Link>
               </p>
 
               <div className="d-flex flex-row justify-content-start">
-                <a href="#!" className="small text-muted me-1">
+                <Link to="#!" className="small text-muted me-1">
                   Terms of use.
-                </a>
-                <a href="#!" className="small text-muted">
+                </Link>
+                <Link to="#!" className="small text-muted">
                   Privacy policy
-                </a>
+                </Link>
               </div>
             </MDBCardBody>
           </MDBCol>

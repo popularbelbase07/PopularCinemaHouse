@@ -95,9 +95,6 @@ export default function Menu() {
               }
               notAuthorized={
                 <>
-                  <Link to="/register" className="nav-link btn btn-link">                   
-                    Register
-                  </Link>
                   <Link to="/login" className="nav-link btn btn-link">                    
                     Login
                   </Link>

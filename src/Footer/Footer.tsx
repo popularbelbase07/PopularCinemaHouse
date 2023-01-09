@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 export default function Footer() {
@@ -6,8 +7,8 @@ export default function Footer() {
 
   <div className="App">
 
-    <h6> The Oracle Cinamas © 2022 PCH - All rights reserved </h6>
-    <a className="text-white" href="https:/popularbelbase.epizy.com/"><h6>Designed & Developed By : Popular Belbase</h6></a>
+    <h6> The Oracle Cinemas © 2022 All rights reserved </h6>
+    <Link className="text-white" to="https:/popularbelbase.epizy.com/"><h6>Designed & Developed By : Popular Belbase</h6></Link>
   </div>
 </div>
   );

@@ -5,7 +5,7 @@ import {
   MDBCardImage, MDBCol, MDBContainer, MDBIcon, MDBRow
 } from "mdb-react-ui-kit";
 import { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { urlAccounts } from "../endpoints";
 import logo from "../navBar/Oracle Cinema.gif";
 import DisplayError from "../Utils/DisplayError";
@@ -75,12 +75,12 @@ export default function Registration() {
                 />
               </>
               <div className="d-flex flex-row justify-content-start">
-                <a href="#!" className="small text-muted me-1">
+                <Link to="#!" className="small text-muted me-1">
                   Terms of use.
-                </a>
-                <a href="#!" className="small text-muted">
+                </Link>
+                <Link to="#!" className="small text-muted">
                   Privacy policy
-                </a>
+                </Link>
               </div>
             </MDBCardBody>
           </MDBCol>
