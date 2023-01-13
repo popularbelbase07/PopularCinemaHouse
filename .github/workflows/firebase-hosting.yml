@@ -2,7 +2,7 @@ name: Firebase CI
 
 on:
   push:
-    branches: a3d16c584afdc3c69294b7d6a950a15d05c4f837
+    branches: main
 
 jobs:
   build:
